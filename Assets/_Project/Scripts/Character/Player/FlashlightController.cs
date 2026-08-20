@@ -65,7 +65,7 @@ namespace SubjectZero.Character.Player
             if (BatteryPercent01 <= config.lowBatteryThreshold)
             {
                 float noise = Mathf.PerlinNoise(_flickerSeed, Time.time * 8f);
-                flashlightLight.intensity = config.lightIntensity * (1f - config.flickerAmount * noise);
+                flashlightLight.intensity = Mathf.Max(0f, config.lightIntensity * (1f - config.flickerAmount * noise));
             }
             else
             {
