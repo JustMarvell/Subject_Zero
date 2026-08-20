@@ -68,16 +68,21 @@ namespace SubjectZero.Character.Player
 
         private void OnEnable()
         {
-            inputReader.OnCrouchPressed += Stance.ToggleCrouch;
+            inputReader.EnableInput();
         }
 
         private void OnDisable()
         {
-            inputReader.OnCrouchPressed -= Stance.ToggleCrouch;
+            inputReader.DisableInput();
         }
 
         private void Update()
         {
+            // Debug.Log($"[PlayerController] Update running. Frame: {Time.frameCount}");
+
+            if (inputReader.CrouchPressedThisFrame)
+                Stance.ToggleCrouch();
+
             StateMachine.Tick();
             Stance.Tick(Time.deltaTime);
             ApplyGravity();

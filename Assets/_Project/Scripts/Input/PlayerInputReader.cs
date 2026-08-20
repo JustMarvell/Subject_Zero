@@ -5,23 +5,18 @@ using UnityEngine.InputSystem;
 namespace SubjectZero.Input
 {
     /// <summary>
-    /// Reads the "Player" action map from an InputActionAsset and exposes the current
-    /// values as plain properties/events. Deliberately does NOT rely on Unity's
-    /// generated C# wrapper class for the .inputactions asset - it binds to actions
-    /// by name instead, so nothing breaks if the asset is edited later.
+    /// Reads the "Player" action map from an InputActionAsset. Continuous values
+    /// (Move, Look, Sprint, Sneak) are polled directly each frame rather than via
+    /// performed/canceled callbacks - simpler, avoids event-subscription lifecycle
+    /// pitfalls, and is the standard approach for per-frame axis input. Crouch stays
+    /// press-detected since it's a discrete toggle, but polled too (WasPerformedThisFrame)
+    /// rather than event-based, for consistency.
     /// </summary>
     [CreateAssetMenu(fileName = "PlayerInputReader", menuName = "SubjectZero/Input/Player Input Reader")]
     public class PlayerInputReader : ScriptableObject
     {
         [SerializeField] private InputActionAsset inputActions;
         [SerializeField] private string actionMapName = "Player";
-
-        public event Action OnCrouchPressed;
-
-        public Vector2 MoveInput { get; private set; }
-        public Vector2 LookInput { get; private set; }
-        public bool SprintHeld { get; private set; }
-        public bool SneakHeld { get; private set; }
 
         private InputActionMap _map;
         private InputAction _moveAction;
@@ -30,6 +25,12 @@ namespace SubjectZero.Input
         private InputAction _sneakAction;
         private InputAction _crouchAction;
         private bool _initialized;
+
+        public Vector2 MoveInput => _moveAction?.ReadValue<Vector2>() ?? Vector2.zero;
+        public Vector2 LookInput => _lookAction?.ReadValue<Vector2>() ?? Vector2.zero;
+        public bool SprintHeld => _sprintAction != null && _sprintAction.IsPressed();
+        public bool SneakHeld => _sneakAction != null && _sneakAction.IsPressed();
+        public bool CrouchPressedThisFrame => _crouchAction != null && _crouchAction.WasPerformedThisFrame();
 
         private void OnEnable()
         {
@@ -41,43 +42,19 @@ namespace SubjectZero.Input
 
             _map = inputActions.FindActionMap(actionMapName, throwIfNotFound: true);
 
-            if (!_initialized)
-            {
-                _moveAction = _map.FindAction("Move");
-                _lookAction = _map.FindAction("Look");
-                _sprintAction = _map.FindAction("Sprint");
-                _sneakAction = _map.FindAction("Sneak");
-                _crouchAction = _map.FindAction("Crouch");
+            _moveAction = _map.FindAction("Move");
+            _lookAction = _map.FindAction("Look");
+            _sprintAction = _map.FindAction("Sprint");
+            _sneakAction = _map.FindAction("Sneak");
+            _crouchAction = _map.FindAction("Crouch");
 
-                _moveAction.performed += OnMoveChanged;
-                _moveAction.canceled += OnMoveChanged;
-
-                _lookAction.performed += OnLookChanged;
-                _lookAction.canceled += OnLookChanged;
-
-                _sprintAction.performed += OnSprintChanged;
-                _sprintAction.canceled += OnSprintChanged;
-
-                _sneakAction.performed += OnSneakChanged;
-                _sneakAction.canceled += OnSneakChanged;
-
-                _crouchAction.performed += OnCrouchAction;
-
-                _initialized = true;
-            }
-
-            _map.Enable();
+            if (_moveAction == null || _lookAction == null || _sprintAction == null || _sneakAction == null || _crouchAction == null)
+                Debug.LogError($"[PlayerInputReader] One or more actions not found in map '{actionMapName}'. Check names in the .inputactions asset.");
         }
 
-        private void OnDisable()
-        {
-            _map?.Disable();
-        }
+        private void OnDisable() { }
 
-        private void OnMoveChanged(InputAction.CallbackContext ctx) => MoveInput = ctx.ReadValue<Vector2>();
-        private void OnLookChanged(InputAction.CallbackContext ctx) => LookInput = ctx.ReadValue<Vector2>();
-        private void OnSprintChanged(InputAction.CallbackContext ctx) => SprintHeld = ctx.performed;
-        private void OnSneakChanged(InputAction.CallbackContext ctx) => SneakHeld = ctx.performed;
-        private void OnCrouchAction(InputAction.CallbackContext ctx) => OnCrouchPressed?.Invoke();
+        public void EnableInput() => _map?.Enable();
+        public void DisableInput() => _map?.Disable();
     }
 }

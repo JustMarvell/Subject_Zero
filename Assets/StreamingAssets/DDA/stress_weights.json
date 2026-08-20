@@ -1,0 +1,14 @@
+{
+    "weights": {
+        "death_rate": 0.25,
+        "near_miss_rate": 0.15,
+        "reaction_time_inverse": 0.15,
+        "hide_ratio": 0.15,
+        "movement_erraticism": 0.15,
+        "resource_usage_rate": 0.15
+    },
+    "thresholds": {
+        "too_easy_max": -0.33,
+        "too_hard_min": 0.33
+    }
+}
