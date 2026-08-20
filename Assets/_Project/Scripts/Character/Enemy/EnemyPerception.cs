@@ -10,7 +10,8 @@ namespace SubjectZero.Character.Enemy
 
         public bool CanSeePlayer()
         {
-            if (_enemy.Player.IsHidden) return false;
+            // Flashlight gives away a hidden player's position.
+            if (_enemy.Player.IsHidden && !_enemy.Player.IsFlashlightOn) return false;
 
             var config = _enemy.Config;
             Transform player = _enemy.PlayerTransform;
@@ -19,7 +20,11 @@ namespace SubjectZero.Character.Enemy
             Vector3 toPlayer = player.position - eyePos;
             float distance = toPlayer.magnitude;
 
-            if (distance > _enemy.CurrentVisionRange) return false;
+            float effectiveVisionRange = _enemy.CurrentVisionRange;
+            if (_enemy.Player.IsFlashlightOn)
+                effectiveVisionRange *= config.flashlightVisionMultiplier;
+
+            if (distance > effectiveVisionRange) return false;
 
             Vector3 dirToPlayer = toPlayer.normalized;
             float angle = Vector3.Angle(_enemy.transform.forward, dirToPlayer);

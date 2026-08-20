@@ -42,5 +42,9 @@ namespace SubjectZero.Character.Enemy
 
         [Header("Catch")]
         public float catchDistance = 1.0f;
+
+        [Header("Flashlight Interaction")]
+        [Tooltip("Multiplier applied to vision range when the player's flashlight is on - light gives away position.")]
+        public float flashlightVisionMultiplier = 1.5f;
     }
 }
