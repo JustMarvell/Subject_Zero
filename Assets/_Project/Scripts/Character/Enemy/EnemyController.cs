@@ -31,6 +31,15 @@ namespace SubjectZero.Character.Enemy
         public EnemyChaseState ChaseState { get; private set; }
         public EnemyLostState LostState { get; private set; }
 
+        public float CurrentPatrolSpeed { get; private set; }
+        public float CurrentAlertSpeed { get; private set; }
+        public float CurrentSearchSpeed { get; private set; }
+        public float CurrentChaseSpeed { get; private set; }
+        public float CurrentVisionRange { get; private set; }
+
+        public bool IsInSafeState =>
+            StateMachine.CurrentState == PatrolState || StateMachine.CurrentState == LostState;
+
         /// <summary>Stub hook - later phases (GameManager, respawn/checkpoint system) will subscribe here.</summary>
         public event Action OnPlayerCaught;
 
@@ -45,6 +54,12 @@ namespace SubjectZero.Character.Enemy
             SearchState = new EnemySearchState(this);
             ChaseState = new EnemyChaseState(this);
             LostState = new EnemyLostState(this);
+
+            CurrentPatrolSpeed = config.patrolSpeed;
+            CurrentAlertSpeed = config.alertSpeed;
+            CurrentSearchSpeed = config.searchSpeed;
+            CurrentChaseSpeed = config.chaseSpeed;
+            CurrentVisionRange = config.visionRange;
         }
 
         private void Start()
@@ -67,6 +82,28 @@ namespace SubjectZero.Character.Enemy
             TelemetryManager.Instance?.RecordDeath();
             OnPlayerCaught?.Invoke();
             Debug.Log("[EnemyController] Player caught. (Retry/respawn not yet built - stub only.)");
+        }
+
+        /// <summary>
+        /// Applies a difficulty adjustment (-1 = too easy, +1 = too hard) to this entity's
+        /// runtime stats, derived from the config's base values - never mutates the
+        /// EnemyConfig asset itself. Only chase speed and vision range have explicit clamp
+        /// ranges from the original design; the other movement speeds share the same
+        /// speed factor for consistency but rely on the factor's own bounds rather than a
+        /// separately-specified range (a TODO, same as the stress-score thresholds).
+        /// </summary>
+        public void ApplyDifficultyAdjustment(float score)
+        {
+            score = Mathf.Clamp(score, -1f, 1f);
+
+            float speedFactor = 1f - 0.15f * score;
+            CurrentPatrolSpeed = config.patrolSpeed * speedFactor;
+            CurrentAlertSpeed = config.alertSpeed * speedFactor;
+            CurrentSearchSpeed = config.searchSpeed * speedFactor;
+            CurrentChaseSpeed = Mathf.Clamp(config.chaseSpeed * speedFactor, 2.8f, 4.2f);
+
+            float visionFactor = 1f - 0.2f * score;
+            CurrentVisionRange = Mathf.Clamp(config.visionRange * visionFactor, 5f, 10f);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace SubjectZero.Character.Enemy
             Vector3 toPlayer = player.position - eyePos;
             float distance = toPlayer.magnitude;
 
-            if (distance > config.visionRange) return false;
+            if (distance > _enemy.CurrentVisionRange) return false;
 
             Vector3 dirToPlayer = toPlayer.normalized;
             float angle = Vector3.Angle(_enemy.transform.forward, dirToPlayer);

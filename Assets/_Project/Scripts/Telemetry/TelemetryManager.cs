@@ -46,6 +46,9 @@ namespace SubjectZero.Telemetry
         private PlayerController.LocomotionMode _lastLocomotionMode;
         private bool _lastCrouchState;
 
+        public event Action<TelemetrySample> OnSampleLogged;
+        public TelemetrySample LatestSample { get; private set; }
+
         private void Awake()
         {
             if (Instance != null && Instance != this) { Destroy(gameObject); return; }
@@ -192,6 +195,9 @@ namespace SubjectZero.Telemetry
             sample.difficulty_label = StressScoreCalculator.ComputeLabel(sample.stress_score, _weights);
 
             AppendToFile(sample);
+
+            LatestSample = sample;
+            OnSampleLogged?.Invoke(sample);
         }
 
         private float RatePerMinute(List<float> timestamps, float windowStart)
