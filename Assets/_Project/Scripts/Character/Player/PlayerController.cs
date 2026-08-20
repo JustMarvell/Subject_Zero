@@ -26,6 +26,7 @@ namespace SubjectZero.Character.Player
 
         public Vector3 MoveVelocity { get; set; }
         public LocomotionMode CurrentLocomotionMode { get; set; } = LocomotionMode.Idle;
+        public bool IsHidden { get; set; }
 
         /// <summary>
         /// 0-1 noise level for the player's current movement, factoring in crouch.
