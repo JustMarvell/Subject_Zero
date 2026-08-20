@@ -24,13 +24,14 @@ namespace SubjectZero.Input
         private InputAction _sprintAction;
         private InputAction _sneakAction;
         private InputAction _crouchAction;
-        private bool _initialized;
+        private InputAction _interactAction;
 
         public Vector2 MoveInput => _moveAction?.ReadValue<Vector2>() ?? Vector2.zero;
         public Vector2 LookInput => _lookAction?.ReadValue<Vector2>() ?? Vector2.zero;
         public bool SprintHeld => _sprintAction != null && _sprintAction.IsPressed();
         public bool SneakHeld => _sneakAction != null && _sneakAction.IsPressed();
         public bool CrouchPressedThisFrame => _crouchAction != null && _crouchAction.WasPerformedThisFrame();
+        public bool InteractPressedThisFrame => _interactAction != null && _interactAction.WasPerformedThisFrame();
 
         private void OnEnable()
         {
@@ -47,8 +48,9 @@ namespace SubjectZero.Input
             _sprintAction = _map.FindAction("Sprint");
             _sneakAction = _map.FindAction("Sneak");
             _crouchAction = _map.FindAction("Crouch");
+            _interactAction = _map.FindAction("Interact");
 
-            if (_moveAction == null || _lookAction == null || _sprintAction == null || _sneakAction == null || _crouchAction == null)
+            if (_moveAction == null || _lookAction == null || _sprintAction == null || _sneakAction == null || _crouchAction == null || _interactAction == null)
                 Debug.LogError($"[PlayerInputReader] One or more actions not found in map '{actionMapName}'. Check names in the .inputactions asset.");
         }
 
