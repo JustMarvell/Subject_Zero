@@ -28,8 +28,8 @@ MonoBehaviour:
     m_Bits: 4294967295
   gravity: -20
   groundedStickForce: -2
-  lookSensitivityX: 30
-  lookSensitivityY: 30
+  lookSensitivityX: 10
+  lookSensitivityY: 10
   pitchClampMin: -80
   pitchClampMax: 80
   sneakNoise: 0.1
