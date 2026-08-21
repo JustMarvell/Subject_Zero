@@ -7,6 +7,7 @@ namespace SubjectZero.Interaction.Examples
     {
         [SerializeField] private float openAngle = 90f;
         [SerializeField] private float rotateSpeed = 4f;
+        [SerializeField] private Transform hinge;
 
         private Quaternion _closedRotation;
         private Quaternion _openRotation;
@@ -16,7 +17,7 @@ namespace SubjectZero.Interaction.Examples
 
         private void Awake()
         {
-            _closedRotation = transform.localRotation;
+            _closedRotation = hinge != null ? hinge.transform.localRotation : transform.localRotation;
             _openRotation = _closedRotation * Quaternion.Euler(0f, openAngle, 0f);
         }
 
@@ -27,7 +28,11 @@ namespace SubjectZero.Interaction.Examples
         private void Update()
         {
             Quaternion target = _isOpen ? _openRotation : _closedRotation;
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, target, rotateSpeed * Time.deltaTime);
+
+            if (hinge == null)
+                transform.localRotation = Quaternion.Slerp(transform.localRotation, target, rotateSpeed * Time.deltaTime);
+            else
+                hinge.localRotation = Quaternion.Slerp(hinge.localRotation, target, rotateSpeed * Time.deltaTime);
         }
     }
 }

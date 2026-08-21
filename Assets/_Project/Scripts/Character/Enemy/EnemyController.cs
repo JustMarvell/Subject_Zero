@@ -14,7 +14,7 @@ namespace SubjectZero.Character.Enemy
         [SerializeField] private EnemyConfig config;
         [SerializeField] private Transform playerTransform;
         [SerializeField] private PlayerController playerController;
-        [SerializeField] private PatrolRoute patrolRoute;
+        private PatrolRoute patrolRoute;
 
         public EnemyConfig Config => config;
         public Transform PlayerTransform => playerTransform;
@@ -81,7 +81,8 @@ namespace SubjectZero.Character.Enemy
         {
             TelemetryManager.Instance?.RecordDeath();
             OnPlayerCaught?.Invoke();
-            Debug.Log("[EnemyController] Player caught. (Retry/respawn not yet built - stub only.)");
+            Core.GameManager.Instance.RespawnPlayerAtCheckpoint();
+            StateMachine.ChangeState(LostState);
         }
 
         /// <summary>
@@ -104,6 +105,11 @@ namespace SubjectZero.Character.Enemy
 
             float visionFactor = 1f - 0.2f * score;
             CurrentVisionRange = Mathf.Clamp(config.visionRange * visionFactor, 5f, 10f);
+        }
+
+        public void SetPatrolRoute(PatrolRoute route)
+        {
+            patrolRoute = route;
         }
     }
 }
