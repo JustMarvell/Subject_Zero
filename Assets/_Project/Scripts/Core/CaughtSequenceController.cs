@@ -19,6 +19,8 @@ namespace SubjectZero.Core
         [SerializeField] private float eyeHeightOffset = 1.5f;
         [SerializeField] private float sequenceDelay = 1.5f;
 
+        public bool IsActive { get; private set; }
+
         private void Awake()
         {
             if (Instance != null && Instance != this) { Destroy(gameObject); return; }
@@ -27,7 +29,11 @@ namespace SubjectZero.Core
 
         private void Start() => caughtMenuRoot.SetActive(false);
 
-        public void TriggerCaughtSequence(EnemyController entity) => StartCoroutine(CaughtRoutine(entity));
+        public void TriggerCaughtSequence(EnemyController entity)
+        {
+            IsActive = true;
+            StartCoroutine(CaughtRoutine(entity));
+        }
 
         private IEnumerator CaughtRoutine(EnemyController entity)
         {
@@ -81,6 +87,8 @@ namespace SubjectZero.Core
 
         public void OnRetryButton()
         {
+            IsActive = false;
+
             caughtMenuRoot.SetActive(false);
             GameManager.Instance.RespawnPlayerAtCheckpoint();
             GameManager.Instance.ReactivateEntityForCurrentZone();

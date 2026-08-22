@@ -15,9 +15,13 @@ namespace SubjectZero.Core
 
         private void Update()
         {
-            if (inputReader.PausePressedThisFrame && !IsPaused)
-                SetPaused(true);
+            if (!inputReader.PausePressedThisFrame || IsPaused) return;
+            if (CaughtSequenceController.Instance != null && CaughtSequenceController.Instance.IsActive) return;
+            if (GameCompleteController.Instance != null && GameCompleteController.Instance.IsActive) return;
+
+            SetPaused(true);
         }
+
         public void TogglePause() => SetPaused(!IsPaused);
 
         public void SetPaused(bool paused)

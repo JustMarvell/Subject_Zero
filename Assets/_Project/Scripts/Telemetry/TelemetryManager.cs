@@ -26,6 +26,9 @@ namespace SubjectZero.Telemetry
 
         public bool DDAEnabled { get; set; } = true;
 
+        public int TotalDeaths => _deathTimestamps.Count;
+        public int TotalNearMisses => _nearMissTimestamps.Count;
+
         private DDAWeights _weights;
         private string _outputPath;
         private float _samplingTimer;
