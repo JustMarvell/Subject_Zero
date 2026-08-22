@@ -39,6 +39,8 @@ namespace SubjectZero.Character.Enemy
 
         public bool IsInSafeState =>
             StateMachine.CurrentState == PatrolState || StateMachine.CurrentState == LostState;
+        public bool IsZoneActive { get; private set; }
+
 
         /// <summary>Stub hook - later phases (GameManager, respawn/checkpoint system) will subscribe here.</summary>
         public event Action OnPlayerCaught;
@@ -64,17 +66,17 @@ namespace SubjectZero.Character.Enemy
 
         private void Start()
         {
-            StateMachine.ChangeState(PatrolState);
+            SetZoneActive(false);
         }
 
         private void Update()
         {
-            StateMachine.Tick();
+            if (IsZoneActive) StateMachine.Tick();
         }
 
         private void FixedUpdate()
         {
-            StateMachine.FixedTick();
+            if (IsZoneActive) StateMachine.FixedTick();
         }
 
         public void TriggerCatch()
@@ -110,6 +112,21 @@ namespace SubjectZero.Character.Enemy
         public void SetPatrolRoute(PatrolRoute route)
         {
             patrolRoute = route;
+        }
+
+        public void SetZoneActive(bool active)
+        {
+            IsZoneActive = active;
+            gameObject.SetActive(active);
+
+            if (active)
+            {
+                Agent.enabled = true;
+                Transform firstWaypoint = patrolRoute != null ? patrolRoute.GetWaypoint(0) : null;
+                if (firstWaypoint != null)
+                    Agent.Warp(firstWaypoint.position);
+                StateMachine.ChangeState(PatrolState);
+            }
         }
     }
 }

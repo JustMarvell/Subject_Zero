@@ -24,6 +24,8 @@ namespace SubjectZero.Telemetry
         public float SessionTime { get; private set; }
         public string CurrentZone { get; set; } = "unassigned";
 
+        public bool DDAEnabled { get; set; } = true;
+
         private DDAWeights _weights;
         private string _outputPath;
         private float _samplingTimer;

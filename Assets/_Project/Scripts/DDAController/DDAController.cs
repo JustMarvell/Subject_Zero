@@ -42,6 +42,7 @@ namespace SubjectZero.DDA
 
         private void HandleSampleLogged(TelemetrySample sample)
         {
+            if (telemetryManager != null && !telemetryManager.DDAEnabled) return;
             _pendingScore = sample.stress_score;
         }
 

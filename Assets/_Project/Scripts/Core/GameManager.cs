@@ -1,6 +1,4 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using SubjectZero.Character.Player;
 using SubjectZero.Character.Enemy;
 using SubjectZero.Telemetry;
@@ -8,10 +6,6 @@ using SubjectZero.World;
 
 namespace SubjectZero.Core
 {
-    /// <summary>
-    /// Persists across zone transitions (lives in the Bootstrap scene). Owns the
-    /// current checkpoint, respawn logic, and additive zone loading/unloading.
-    /// </summary>
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance { get; private set; }
@@ -25,6 +19,8 @@ namespace SubjectZero.Core
         private Vector3 _checkpointPosition;
         private Quaternion _checkpointRotation;
         private string _currentZoneScene;
+        private string _pendingZoneScene;
+        private string _pendingSpawnPointId;
 
         private void Awake()
         {
@@ -34,7 +30,9 @@ namespace SubjectZero.Core
 
         private void Start()
         {
-            StartCoroutine(LoadZone(firstZoneScene, firstSpawnPointId, isFirstLoad: true));
+            _pendingZoneScene = firstZoneScene;
+            _pendingSpawnPointId = firstSpawnPointId;
+            LoadingScreenController.Instance.LoadSceneAdditive(firstZoneScene, null, OnZoneLoaded);
         }
 
         public void SetCheckpoint(Vector3 position, Quaternion rotation)
@@ -46,29 +44,27 @@ namespace SubjectZero.Core
         public void RespawnPlayerAtCheckpoint()
         {
             var cc = player.CharacterController;
-            cc.enabled = false; // CharacterController fights direct transform writes unless briefly disabled
+            cc.enabled = false;
             player.transform.SetPositionAndRotation(_checkpointPosition, _checkpointRotation);
             cc.enabled = true;
         }
 
         public void TransitionToZone(string sceneName, string spawnPointId)
         {
-            StartCoroutine(LoadZone(sceneName, spawnPointId, isFirstLoad: false));
+            _pendingZoneScene = sceneName;
+            _pendingSpawnPointId = spawnPointId;
+            LoadingScreenController.Instance.LoadSceneAdditive(sceneName, _currentZoneScene, OnZoneLoaded);
         }
 
-        private IEnumerator LoadZone(string sceneName, string spawnPointId, bool isFirstLoad)
+        private void OnZoneLoaded()
         {
-            if (!isFirstLoad && !string.IsNullOrEmpty(_currentZoneScene))
-                yield return SceneManager.UnloadSceneAsync(_currentZoneScene);
+            _currentZoneScene = _pendingZoneScene;
 
-            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-            _currentZoneScene = sceneName;
-
-            SpawnPoint spawn = FindSpawnPoint(spawnPointId);
+            SpawnPoint spawn = FindSpawnPoint(_pendingSpawnPointId);
             if (spawn == null)
             {
-                Debug.LogError($"[GameManager] Spawn point '{spawnPointId}' not found in {sceneName}.");
-                yield break;
+                Debug.LogError($"[GameManager] Spawn point '{_pendingSpawnPointId}' not found.");
+                return;
             }
 
             var cc = player.CharacterController;
@@ -78,12 +74,20 @@ namespace SubjectZero.Core
 
             SetCheckpoint(spawn.transform.position, spawn.transform.rotation);
 
-            if (telemetryManager != null)
-                telemetryManager.CurrentZone = sceneName;
-
             var patrolRoute = FindZonePatrolRoute();
-            if (patrolRoute != null && entity != null)
-                entity.SetPatrolRoute(patrolRoute);
+            bool zoneHasEntity = patrolRoute != null;
+
+            if (entity != null)
+            {
+                if (zoneHasEntity) entity.SetPatrolRoute(patrolRoute);
+                entity.SetZoneActive(zoneHasEntity);
+            }
+
+            if (telemetryManager != null)
+            {
+                telemetryManager.CurrentZone = _currentZoneScene;
+                telemetryManager.DDAEnabled = zoneHasEntity;
+            }
         }
 
         private SpawnPoint FindSpawnPoint(string id)

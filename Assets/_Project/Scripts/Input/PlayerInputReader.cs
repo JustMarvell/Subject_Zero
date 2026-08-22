@@ -26,6 +26,7 @@ namespace SubjectZero.Input
         private InputAction _crouchAction;
         private InputAction _interactAction;
         private InputAction _flashlightAction;
+        private InputAction _pauseAction;
 
         public Vector2 MoveInput => _moveAction?.ReadValue<Vector2>() ?? Vector2.zero;
         public Vector2 LookInput => _lookAction?.ReadValue<Vector2>() ?? Vector2.zero;
@@ -34,6 +35,7 @@ namespace SubjectZero.Input
         public bool CrouchPressedThisFrame => _crouchAction != null && _crouchAction.WasPerformedThisFrame();
         public bool InteractPressedThisFrame => _interactAction != null && _interactAction.WasPerformedThisFrame();
         public bool FlashlightPressedThisFrame => _flashlightAction != null && _flashlightAction.WasPerformedThisFrame();
+        public bool PausePressedThisFrame => _pauseAction != null && _pauseAction.WasPerformedThisFrame();
 
         private void OnEnable()
         {
@@ -52,8 +54,9 @@ namespace SubjectZero.Input
             _crouchAction = _map.FindAction("Crouch");
             _interactAction = _map.FindAction("Interact");
             _flashlightAction = _map.FindAction("Flashlight");
+            _pauseAction = _map.FindAction("Pause");
 
-            if (_moveAction == null || _lookAction == null || _sprintAction == null || _sneakAction == null || _crouchAction == null || _interactAction == null || _flashlightAction == null)
+            if (_moveAction == null || _lookAction == null || _sprintAction == null || _sneakAction == null || _crouchAction == null || _interactAction == null || _flashlightAction == null || _pauseAction == null)
                 Debug.LogError($"[PlayerInputReader] One or more actions not found in map '{actionMapName}'. Check names in the .inputactions asset.");
         }
 
