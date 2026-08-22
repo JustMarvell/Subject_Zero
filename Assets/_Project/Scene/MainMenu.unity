@@ -178,8 +178,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: QUIT
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 754f473802b6424848ae6f98a0ada0a4, type: 2}
+  m_sharedMaterial: {fileID: 7678883160983620143, guid: 754f473802b6424848ae6f98a0ada0a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -315,8 +315,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PLAY
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 754f473802b6424848ae6f98a0ada0a4, type: 2}
+  m_sharedMaterial: {fileID: 7678883160983620143, guid: 754f473802b6424848ae6f98a0ada0a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -425,7 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de176f054df212c72954f79e38bb1aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.UI.MainMenuController
-  settingsPanel: {fileID: 0}
+  settingsPanel: {fileID: 1752080076}
 --- !u!114 &278932927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,8 +625,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 32712396, guid: 52d82ce7ca39a6b449f7d8ea37dd2f0b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -653,6 +653,7 @@ GameObject:
   m_Component:
   - component: {fileID: 900791466}
   - component: {fileID: 900791467}
+  - component: {fileID: 900791468}
   m_Layer: 0
   m_Name: PersistentSystems
   m_TagString: Untagged
@@ -691,6 +692,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.Core.LoadingScreenController
   loadingCanvasRoot: {fileID: 1362644387}
   progressBar: {fileID: 1966920229}
+--- !u!114 &900791468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900791465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95137a79c44ad7f679084612fb3f5de7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.Audio.AudioManager
+  mixer: {fileID: 24100000, guid: 73fe0903f0cc2eaaaa3a6a3b238b5507, type: 2}
+  sfxGroup: {fileID: -7545421170955898467, guid: 73fe0903f0cc2eaaaa3a6a3b238b5507, type: 2}
+  sfxPoolSize: 12
 --- !u!1 &918501129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,8 +1146,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: SETTINGS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 754f473802b6424848ae6f98a0ada0a4, type: 2}
+  m_sharedMaterial: {fileID: 7678883160983620143, guid: 754f473802b6424848ae6f98a0ada0a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1615,8 +1631,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 32712396, guid: 52d82ce7ca39a6b449f7d8ea37dd2f0b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1922,8 +1938,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 32712396, guid: 52d82ce7ca39a6b449f7d8ea37dd2f0b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

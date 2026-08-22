@@ -1,5 +1,6 @@
 using UnityEngine;
 using SubjectZero.Character.Player;
+using SubjectZero.Audio;
 
 namespace SubjectZero.Interaction.Examples
 {
@@ -8,6 +9,9 @@ namespace SubjectZero.Interaction.Examples
         [SerializeField] private float openAngle = 90f;
         [SerializeField] private float rotateSpeed = 4f;
         [SerializeField] private Transform hinge;
+
+        [SerializeField] private AudioClip openClip;
+        [SerializeField] private AudioClip closeClip;
 
         private Quaternion _closedRotation;
         private Quaternion _openRotation;
@@ -23,7 +27,11 @@ namespace SubjectZero.Interaction.Examples
 
         public bool CanInteract(PlayerController player) => true;
 
-        public void Interact(PlayerController player) => _isOpen = !_isOpen;
+        public void Interact(PlayerController player)
+        {
+            _isOpen = !_isOpen;
+            AudioManager.Instance.PlaySfx3D(_isOpen ? openClip : closeClip, transform.position);
+        }
 
         private void Update()
         {

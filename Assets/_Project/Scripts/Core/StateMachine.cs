@@ -1,8 +1,11 @@
+using System;
+
 namespace SubjectZero.Core
 {
     public class StateMachine
     {
         public IState CurrentState { get; private set; }
+        public event Action<IState> OnStateChanged;
 
         public void ChangeState(IState newState)
         {
@@ -10,6 +13,7 @@ namespace SubjectZero.Core
             CurrentState?.Exit();
             CurrentState = newState;
             CurrentState?.Enter();
+            OnStateChanged?.Invoke(newState);
         }
 
         public void Tick() => CurrentState?.Tick();

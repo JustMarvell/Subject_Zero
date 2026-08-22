@@ -1,6 +1,7 @@
 using UnityEngine;
 using SubjectZero.Input;
 using SubjectZero.Telemetry;
+using SubjectZero.Audio;
 
 namespace SubjectZero.Character.Player
 {
@@ -10,6 +11,7 @@ namespace SubjectZero.Character.Player
         [SerializeField] private PlayerInputReader inputReader;
         [SerializeField] private FlashlightConfig config;
         [SerializeField] private Light flashlightLight;
+        [SerializeField] private AudioClip toggleFlashlightClip;
 
         private float _currentBattery;
         private bool _isOn;
@@ -48,6 +50,7 @@ namespace SubjectZero.Character.Player
 
         private void TryToggle()
         {
+            AudioManager.Instance.PlaySfx3D(toggleFlashlightClip, transform.position);
             if (_isOn) { SetOn(false); return; }
             if (_currentBattery > 0f) SetOn(true);
         }

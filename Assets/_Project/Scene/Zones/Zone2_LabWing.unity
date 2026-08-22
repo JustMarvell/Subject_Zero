@@ -5796,8 +5796,10 @@ MonoBehaviour:
   requiredItemId: room_c_key
   openAngle: -90
   rotateSpeed: 4
-  navObstacle: {fileID: 0}
+  navObstacle: {fileID: 362355784}
   hinge: {fileID: 362355780}
+  openClip: {fileID: 8300000, guid: 7abeed4a8a7856741b9e0f4c5d5fb320, type: 3}
+  closeClip: {fileID: 8300000, guid: e4a38f7b4b08d5f058852d113f19282d, type: 3}
 --- !u!4 &362355782 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9008813494530869528, guid: c0ee31c2922382549829e04cb976bbf3, type: 3}
@@ -8407,8 +8409,10 @@ MonoBehaviour:
   requiredItemId: room_b_key
   openAngle: -90
   rotateSpeed: 4
-  navObstacle: {fileID: 0}
+  navObstacle: {fileID: 519845144}
   hinge: {fileID: 519845140}
+  openClip: {fileID: 8300000, guid: 7abeed4a8a7856741b9e0f4c5d5fb320, type: 3}
+  closeClip: {fileID: 8300000, guid: e4a38f7b4b08d5f058852d113f19282d, type: 3}
 --- !u!4 &519845142 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9008813494530869528, guid: c0ee31c2922382549829e04cb976bbf3, type: 3}
@@ -12216,6 +12220,8 @@ MonoBehaviour:
   rotateSpeed: 4
   navObstacle: {fileID: 0}
   hinge: {fileID: 745194014}
+  openClip: {fileID: 0}
+  closeClip: {fileID: 0}
 --- !u!1001 &747734113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16328,6 +16334,8 @@ MonoBehaviour:
   openAngle: -90
   rotateSpeed: 4
   hinge: {fileID: 950674377}
+  openClip: {fileID: 8300000, guid: 7abeed4a8a7856741b9e0f4c5d5fb320, type: 3}
+  closeClip: {fileID: 8300000, guid: e4a38f7b4b08d5f058852d113f19282d, type: 3}
 --- !u!4 &950674379 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9008813494530869528, guid: c0ee31c2922382549829e04cb976bbf3, type: 3}
@@ -23555,6 +23563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.Interaction.Examples.KeycardPickup
   itemId: room_d_key
   displayName: Room D Key
+  pickupClip: {fileID: 8300000, guid: c172faab926b8fd96b8674ff5046d5c2, type: 3}
 --- !u!65 &1282333270
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24162,6 +24171,10 @@ PrefabInstance:
       propertyPath: itemId
       value: room_c_key
       objectReference: {fileID: 0}
+    - target: {fileID: 8010599089375351063, guid: ac4bf23be814be543840c4634b4c7fbc, type: 3}
+      propertyPath: pickupClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c172faab926b8fd96b8674ff5046d5c2, type: 3}
     - target: {fileID: 8010599089375351063, guid: ac4bf23be814be543840c4634b4c7fbc, type: 3}
       propertyPath: displayName
       value: Room C Key
@@ -28646,6 +28659,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.Interaction.Examples.KeycardPickup
   itemId: exit_key
   displayName: Exit Key
+  pickupClip: {fileID: 8300000, guid: c172faab926b8fd96b8674ff5046d5c2, type: 3}
 --- !u!65 &1604507759
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33225,6 +33239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.Interaction.Examples.KeycardPickup
   itemId: room_b_key
   displayName: Room B Key
+  pickupClip: {fileID: 8300000, guid: c172faab926b8fd96b8674ff5046d5c2, type: 3}
 --- !u!65 &1893644677
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33620,8 +33635,10 @@ MonoBehaviour:
   requiredItemId: room_d_key
   openAngle: -90
   rotateSpeed: 4
-  navObstacle: {fileID: 0}
+  navObstacle: {fileID: 1907798371}
   hinge: {fileID: 1907798367}
+  openClip: {fileID: 8300000, guid: 7abeed4a8a7856741b9e0f4c5d5fb320, type: 3}
+  closeClip: {fileID: 8300000, guid: e4a38f7b4b08d5f058852d113f19282d, type: 3}
 --- !u!4 &1907798369 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3950887816691003647, guid: 28842c385081a574693eea777d2d5fea, type: 3}

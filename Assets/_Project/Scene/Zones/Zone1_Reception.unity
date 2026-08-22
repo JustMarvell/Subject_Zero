@@ -700,6 +700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.Interaction.Examples.KeycardPickup
   itemId: security_room_keycard
   displayName: Security Room Keycard
+  pickupClip: {fileID: 8300000, guid: c172faab926b8fd96b8674ff5046d5c2, type: 3}
 --- !u!65 &58939031
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2849,6 +2850,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.Interaction.Examples.KeycardPickup
   itemId: zone2_key
   displayName: Iron Key
+  pickupClip: {fileID: 8300000, guid: c172faab926b8fd96b8674ff5046d5c2, type: 3}
 --- !u!65 &209284137
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6200,6 +6202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.Interaction.Examples.KeycardPickup
   itemId: office_room_keycard
   displayName: Office Room Keycard
+  pickupClip: {fileID: 8300000, guid: c172faab926b8fd96b8674ff5046d5c2, type: 3}
 --- !u!65 &503037798
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10391,7 +10394,10 @@ MonoBehaviour:
   requiredItemId: security_room_keycard
   openAngle: 100
   rotateSpeed: 4
+  navObstacle: {fileID: 0}
   hinge: {fileID: 808086789}
+  openClip: {fileID: 8300000, guid: 7abeed4a8a7856741b9e0f4c5d5fb320, type: 3}
+  closeClip: {fileID: 8300000, guid: e4a38f7b4b08d5f058852d113f19282d, type: 3}
 --- !u!4 &808086789 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2896158057064791896, guid: 8129dfcf8924f274fa50abd8db1f5f90, type: 3}
@@ -13200,7 +13206,10 @@ MonoBehaviour:
   requiredItemId: meeting_room_keycard
   openAngle: 90
   rotateSpeed: 4
+  navObstacle: {fileID: 0}
   hinge: {fileID: 1015916808}
+  openClip: {fileID: 8300000, guid: 7abeed4a8a7856741b9e0f4c5d5fb320, type: 3}
+  closeClip: {fileID: 8300000, guid: e4a38f7b4b08d5f058852d113f19282d, type: 3}
 --- !u!1001 &1021690251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14059,6 +14068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.Interaction.Examples.KeycardPickup
   itemId: archieve_room_2_keycard
   displayName: Archieve Room B Keycard
+  pickupClip: {fileID: 8300000, guid: c172faab926b8fd96b8674ff5046d5c2, type: 3}
 --- !u!65 &1065626695
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14900,7 +14910,10 @@ MonoBehaviour:
   requiredItemId: zone2_key
   openAngle: 90
   rotateSpeed: 4
+  navObstacle: {fileID: 0}
   hinge: {fileID: 1123955963}
+  openClip: {fileID: 8300000, guid: 7abeed4a8a7856741b9e0f4c5d5fb320, type: 3}
+  closeClip: {fileID: 8300000, guid: e4a38f7b4b08d5f058852d113f19282d, type: 3}
 --- !u!1001 &1129234229
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20210,7 +20223,10 @@ MonoBehaviour:
   requiredItemId: archieve_room_2_keycard
   openAngle: 90
   rotateSpeed: 4
+  navObstacle: {fileID: 0}
   hinge: {fileID: 1448511114}
+  openClip: {fileID: 8300000, guid: 7abeed4a8a7856741b9e0f4c5d5fb320, type: 3}
+  closeClip: {fileID: 8300000, guid: e4a38f7b4b08d5f058852d113f19282d, type: 3}
 --- !u!1001 &1457015160
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20849,7 +20865,10 @@ MonoBehaviour:
   requiredItemId: office_room_keycard
   openAngle: 100
   rotateSpeed: 4
+  navObstacle: {fileID: 0}
   hinge: {fileID: 1496314537}
+  openClip: {fileID: 8300000, guid: 7abeed4a8a7856741b9e0f4c5d5fb320, type: 3}
+  closeClip: {fileID: 8300000, guid: e4a38f7b4b08d5f058852d113f19282d, type: 3}
 --- !u!1001 &1497892295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21332,6 +21351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.Interaction.Examples.KeycardPickup
   itemId: meeting_room_keycard
   displayName: Meeting Room Keycard
+  pickupClip: {fileID: 8300000, guid: c172faab926b8fd96b8674ff5046d5c2, type: 3}
 --- !u!65 &1520758864
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22891,6 +22911,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.Interaction.Examples.KeycardPickup
   itemId: archieve_room_1_keycard
   displayName: Archieve Room A Keycard
+  pickupClip: {fileID: 8300000, guid: c172faab926b8fd96b8674ff5046d5c2, type: 3}
 --- !u!65 &1623581841
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28224,7 +28245,10 @@ MonoBehaviour:
   requiredItemId: archieve_room_1_keycard
   openAngle: 90
   rotateSpeed: 4
+  navObstacle: {fileID: 0}
   hinge: {fileID: 1999289790}
+  openClip: {fileID: 8300000, guid: 7abeed4a8a7856741b9e0f4c5d5fb320, type: 3}
+  closeClip: {fileID: 8300000, guid: e4a38f7b4b08d5f058852d113f19282d, type: 3}
 --- !u!1001 &1999650998
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1596,6 +1596,7 @@ GameObject:
   - component: {fileID: 1731583336}
   - component: {fileID: 1731583339}
   - component: {fileID: 1731583340}
+  - component: {fileID: 1731583341}
   m_Layer: 0
   m_Name: Entity
   m_TagString: Untagged
@@ -1687,6 +1688,25 @@ MonoBehaviour:
   doorMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1731583341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731583335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2dcadf9d53b67379b16707e73c4ff6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.Character.Enemy.EnemyAudio
+  enemy: {fileID: 1731583336}
+  patrolAmbience: {fileID: 8300000, guid: 941ff7a9bf80662dd953e8a2cd2f261c, type: 3}
+  alertStinger: {fileID: 8300000, guid: d7299ad85dd03d2f58c6d01e5a9b4e6e, type: 3}
+  alertLoop: {fileID: 8300000, guid: 006a2f4a5b3413643b2be4d14975c6bc, type: 3}
+  chaseStinger: {fileID: 8300000, guid: f169a46569b39d6b8b27e50e6e7115f8, type: 3}
+  chaseLoop: {fileID: 8300000, guid: 334bfd6007e8bae4f8093ff8d32b70ec, type: 3}
+  ambienceGroup: {fileID: -7183371336337655233, guid: 73fe0903f0cc2eaaaa3a6a3b238b5507, type: 2}
 --- !u!1 &1752947111
 GameObject:
   m_ObjectHideFlags: 0
@@ -2130,6 +2150,7 @@ GameObject:
   - component: {fileID: 2025901804}
   - component: {fileID: 2025901803}
   - component: {fileID: 2025901807}
+  - component: {fileID: 2025901808}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -2184,6 +2205,7 @@ MonoBehaviour:
   inputReader: {fileID: 11400000, guid: 2caf251d909306363b1a334c58c1f2c1, type: 2}
   config: {fileID: 11400000, guid: 628752391caf705128eb1f902081240d, type: 2}
   flashlightLight: {fileID: 2129109866}
+  toggleFlashlightClip: {fileID: 8300000, guid: d6966a8ad51b0035197d13d109a6ee8c, type: 3}
 --- !u!114 &2025901804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2256,6 +2278,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9d54a6c6c3ee89bdbf6782f351a6cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.Character.Player.PlayerKeyItems
+--- !u!114 &2025901808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025901800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a0b69ed8ff991462bcecbb77d719c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.Character.Player.FootstepController
+  player: {fileID: 2025901801}
+  footstepClips:
+  - {fileID: 8300000, guid: fdb57764cbe9d45019b64c74e8cfdd7c, type: 3}
+  - {fileID: 8300000, guid: c62b2326f656d89f99f70c5f338e7ac5, type: 3}
+  - {fileID: 8300000, guid: 90ee88b3abf2952538c57a6351fe6be1, type: 3}
+  walkStepInterval: 0.5
+  sneakStepInterval: 0.8
+  sprintStepInterval: 0.32
 --- !u!1 &2129109863
 GameObject:
   m_ObjectHideFlags: 0

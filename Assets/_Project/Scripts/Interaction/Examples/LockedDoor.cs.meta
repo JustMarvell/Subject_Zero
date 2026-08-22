@@ -1,2 +1,15 @@
 fileFormatVersion: 2
 guid: 265dfbd03213eed868947c5fee82bc9d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - navObstacle: {instanceID: 0}
+  - hinge: {instanceID: 0}
+  - openClip: {fileID: 8300000, guid: 7abeed4a8a7856741b9e0f4c5d5fb320, type: 3}
+  - closeClip: {fileID: 8300000, guid: e4a38f7b4b08d5f058852d113f19282d, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

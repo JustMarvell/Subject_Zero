@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using SubjectZero.Character.Player;
+using SubjectZero.Audio;
 
 namespace SubjectZero.Interaction.Examples
 {
@@ -11,6 +12,9 @@ namespace SubjectZero.Interaction.Examples
         [SerializeField] private float rotateSpeed = 4f;
         [SerializeField] private NavMeshObstacle navObstacle;
         [SerializeField] private Transform hinge;
+
+        [SerializeField] private AudioClip openClip;
+        [SerializeField] private AudioClip closeClip;
 
         private Quaternion _closedRotation, _openRotation;
         private bool _isOpen;
@@ -30,7 +34,11 @@ namespace SubjectZero.Interaction.Examples
         public bool CanInteract(PlayerController player) =>
             PlayerKeyItems.Instance != null && PlayerKeyItems.Instance.HasItem(requiredItemId);
 
-        public void Interact(PlayerController player) => SetOpen(!_isOpen);
+        public void Interact(PlayerController player)
+        {
+            SetOpen(!_isOpen);
+            AudioManager.Instance.PlaySfx3D(_isOpen ? openClip : closeClip, transform.position);
+        }
 
         /// <summary>Bypasses the key check entirely - used only by the entity.</summary>
         public void EntityOpen() => SetOpen(true);
