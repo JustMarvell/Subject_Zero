@@ -106,5 +106,17 @@ namespace SubjectZero.Core
             var routes = FindObjectsByType<PatrolRoute>(FindObjectsSortMode.None);
             return routes.Length > 0 ? routes[0] : null;
         }
+
+        public void ReactivateEntityForCurrentZone()
+        {
+            var patrolRoute = FindZonePatrolRoute();
+            bool zoneHasEntity = patrolRoute != null;
+
+            if (entity != null)
+            {
+                if (zoneHasEntity) entity.SetPatrolRoute(patrolRoute);
+                entity.SetZoneActive(zoneHasEntity);
+            }
+        }
     }
 }

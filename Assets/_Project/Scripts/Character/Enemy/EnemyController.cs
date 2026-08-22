@@ -83,8 +83,7 @@ namespace SubjectZero.Character.Enemy
         {
             TelemetryManager.Instance?.RecordDeath();
             OnPlayerCaught?.Invoke();
-            Core.GameManager.Instance.RespawnPlayerAtCheckpoint();
-            StateMachine.ChangeState(LostState);
+            Core.CaughtSequenceController.Instance.TriggerCaughtSequence(this);
         }
 
         /// <summary>
@@ -127,6 +126,17 @@ namespace SubjectZero.Character.Enemy
                     Agent.Warp(firstWaypoint.position);
                 StateMachine.ChangeState(PatrolState);
             }
+        }
+
+        /// <summary>
+        /// Stops the entity dead - agent disabled so it cannot drift or rotate any
+        /// further, but the GameObject stays visible (unlike SetZoneActive(false),
+        /// which also hides it) since the jumpscare needs to actually see it.
+        /// </summary>
+        public void FreezeForCaughtSequence()
+        {
+            IsZoneActive = false; // already gates StateMachine.Tick()/FixedTick() in Update/FixedUpdate
+            Agent.enabled = false;
         }
     }
 }

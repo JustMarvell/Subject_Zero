@@ -14,8 +14,14 @@ namespace SubjectZero.CameraSystem
 
         private float _pitch;
 
+        public bool IsLocked { get; private set; }
+
+        public void SetLocked(bool locked) => IsLocked = locked;
+
         private void Update()
         {
+            if (IsLocked) return;
+
             Vector2 look = inputReader.LookInput;
             float sensMult = SettingsManager.Instance != null ? SettingsManager.Instance.SensitivityMultiplier : 1f;
             float invertSign = SettingsManager.Instance != null && SettingsManager.Instance.InvertY ? 1f : -1f;
@@ -25,6 +31,12 @@ namespace SubjectZero.CameraSystem
             _pitch = Mathf.Clamp(_pitch, config.pitchClampMin, config.pitchClampMax);
 
             playerBody.Rotate(Vector3.up, yaw);
+            cameraPivot.localRotation = Quaternion.Euler(_pitch, 0f, 0f);
+        }
+
+        public void SetForcedPitch(float pitch)
+        {
+            _pitch = pitch;
             cameraPivot.localRotation = Quaternion.Euler(_pitch, 0f, 0f);
         }
     }

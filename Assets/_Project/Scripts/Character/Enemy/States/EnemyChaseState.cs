@@ -27,8 +27,8 @@ namespace SubjectZero.Character.Enemy
             if (distance <= _enemy.Config.catchDistance)
             {
                 _caughtThisRun = true;
-                _enemy.TriggerCatch();
                 _enemy.StateMachine.ChangeState(_enemy.LostState);
+                _enemy.TriggerCatch();
                 return;
             }
 

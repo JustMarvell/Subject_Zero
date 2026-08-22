@@ -28,6 +28,7 @@ namespace SubjectZero.Character.Player
         public LocomotionMode CurrentLocomotionMode { get; set; } = LocomotionMode.Idle;
         public bool IsHidden { get; set; }
         public bool IsFlashlightOn { get; set; }
+        public bool InputLocked { get; private set; }
 
         /// <summary>
         /// 0-1 noise level for the player's current movement, factoring in crouch.
@@ -80,7 +81,8 @@ namespace SubjectZero.Character.Player
 
         private void Update()
         {
-            // Debug.Log($"[PlayerController] Update running. Frame: {Time.frameCount}");
+            
+            if (InputLocked) return;
 
             if (inputReader.CrouchPressedThisFrame)
                 Stance.ToggleCrouch();
@@ -112,6 +114,12 @@ namespace SubjectZero.Character.Player
             forward.Normalize();
             right.Normalize();
             return forward * input.y + right * input.x;
+        }
+
+        public void SetInputLocked(bool locked)
+        {
+            InputLocked = locked;
+            if (locked) MoveVelocity = Vector3.zero;
         }
     }
 }
