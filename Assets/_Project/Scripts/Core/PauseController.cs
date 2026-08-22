@@ -7,6 +7,7 @@ namespace SubjectZero.Core
     {
         [SerializeField] private PlayerInputReader inputReader;
         [SerializeField] private GameObject pauseCanvasRoot;
+        [SerializeField] private GameObject settingsPanel;
 
         public bool IsPaused { get; private set; }
 
@@ -29,10 +30,9 @@ namespace SubjectZero.Core
             Cursor.visible = paused;
         }
 
-        // Wire to the Resume button's OnClick in the Inspector
         public void OnResumeButton() => SetPaused(false);
+        public void OnSettingsButton() => settingsPanel.SetActive(true);
 
-        // Wire to the "Quit to Main Menu" button's OnClick in the Inspector
         public void OnQuitToMainMenuButton()
         {
             Time.timeScale = 1f;

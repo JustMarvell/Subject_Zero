@@ -1,17 +1,10 @@
-
 using UnityEngine;
 using SubjectZero.Input;
 using SubjectZero.Character.Player;
+using SubjectZero.Core;
 
 namespace SubjectZero.CameraSystem
 {
-    /// <summary>
-    /// Drives first-person look directly (not through Cinemachine Aim/Body).
-    /// The CinemachineCamera should be parented under the same cameraPivot this
-    /// script rotates, so it inherits position/rotation through normal Unity
-    /// parenting. Cinemachine's own job is left free for lens/FOV, impulse
-    /// (jump-scare shake), and noise (idle sway) - added in a later phase.
-    /// </summary>
     public class PlayerCameraController : MonoBehaviour
     {
         [SerializeField] private PlayerInputReader inputReader;
@@ -24,9 +17,11 @@ namespace SubjectZero.CameraSystem
         private void Update()
         {
             Vector2 look = inputReader.LookInput;
+            float sensMult = SettingsManager.Instance != null ? SettingsManager.Instance.SensitivityMultiplier : 1f;
+            float invertSign = SettingsManager.Instance != null && SettingsManager.Instance.InvertY ? 1f : -1f;
 
-            float yaw = look.x * config.lookSensitivityX * Time.deltaTime;
-            _pitch -= look.y * config.lookSensitivityY * Time.deltaTime;
+            float yaw = look.x * config.lookSensitivityX * sensMult * Time.deltaTime;
+            _pitch += invertSign * look.y * config.lookSensitivityY * sensMult * Time.deltaTime;
             _pitch = Mathf.Clamp(_pitch, config.pitchClampMin, config.pitchClampMax);
 
             playerBody.Rotate(Vector3.up, yaw);
