@@ -28,11 +28,15 @@ namespace SubjectZero.Core
             Instance = this;
         }
 
-        private void Start()
+        public void LoadFirstZone(System.Action onComplete)
         {
             _pendingZoneScene = firstZoneScene;
             _pendingSpawnPointId = firstSpawnPointId;
-            LoadingScreenController.Instance.LoadSceneAdditive(firstZoneScene, null, OnZoneLoaded);
+            LoadingScreenController.Instance.LoadSceneAdditive(firstZoneScene, null, () =>
+            {
+                OnZoneLoaded();
+                onComplete?.Invoke();
+            });
         }
 
         public void SetCheckpoint(Vector3 position, Quaternion rotation)

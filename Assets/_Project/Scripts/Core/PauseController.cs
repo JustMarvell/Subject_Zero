@@ -15,10 +15,9 @@ namespace SubjectZero.Core
 
         private void Update()
         {
-            if (inputReader.PausePressedThisFrame)
-                TogglePause();
+            if (inputReader.PausePressedThisFrame && !IsPaused)
+                SetPaused(true);
         }
-
         public void TogglePause() => SetPaused(!IsPaused);
 
         public void SetPaused(bool paused)

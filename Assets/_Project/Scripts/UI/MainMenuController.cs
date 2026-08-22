@@ -7,7 +7,13 @@ namespace SubjectZero.UI
     {
         [SerializeField] private GameObject settingsPanel; // stub - full settings menu comes in a later pass
 
-        public void OnPlayButton() => LoadingScreenController.Instance.LoadSceneSingle("Bootstrap");
+        public void OnPlayButton()
+        {
+            LoadingScreenController.Instance.LoadSceneSingle("Bootstrap", () =>
+            {
+                GameManager.Instance.LoadFirstZone(null);
+            });
+        }
 
         public void OnSettingsButton()
         {
