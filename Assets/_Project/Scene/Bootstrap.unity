@@ -4648,6 +4648,22 @@ MonoBehaviour:
   telemetryManager: {fileID: 147832567}
   enemies:
   - {fileID: 1731583336}
+  useMlModel: 1
+  modelAsset: {fileID: 5022602860645237092, guid: 2263e84a3bd463e13942e60655ef9ef9, type: 3}
+  probabilityOutputName: probabilities
+  classOrder:
+  - balanced
+  - too_easy
+  - too_hard
+  featureOrder:
+  - death_rate
+  - near_miss_rate
+  - avg_reaction_time
+  - hide_ratio
+  - movement_erraticism
+  - resource_usage_rate
+  - idle_ratio
+  - darkness_ratio
 --- !u!4 &1752947113
 Transform:
   m_ObjectHideFlags: 0
