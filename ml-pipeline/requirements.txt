@@ -4,3 +4,4 @@ numpy
 skl2onnx
 onnx
 joblib
+onnxruntime

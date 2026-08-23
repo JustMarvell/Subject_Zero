@@ -1,0 +1,16 @@
+{
+  "feature_order": [
+    "death_rate",
+    "near_miss_rate",
+    "avg_reaction_time",
+    "hide_ratio",
+    "movement_erraticism",
+    "resource_usage_rate",
+    "idle_ratio",
+    "darkness_ratio"
+  ],
+  "class_order": [
+    "balanced",
+    "too_easy"
+  ]
+}
