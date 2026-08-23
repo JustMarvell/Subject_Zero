@@ -4,6 +4,7 @@ using SubjectZero.Character.Player;
 using SubjectZero.Character.Enemy;
 using SubjectZero.CameraSystem;
 using SubjectZero.Audio;
+using SubjectZero.Telemetry;
 
 namespace SubjectZero.Core
 {
@@ -102,6 +103,7 @@ namespace SubjectZero.Core
         public void OnQuitButton()
         {
             Time.timeScale = 1f;
+            TelemetryUploader.Instance?.UploadCurrentSession();
             LoadingScreenController.Instance.LoadSceneSingle("MainMenu");
         }
     }

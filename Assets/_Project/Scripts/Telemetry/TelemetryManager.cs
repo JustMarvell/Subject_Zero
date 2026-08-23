@@ -58,6 +58,7 @@ namespace SubjectZero.Telemetry
         {
             if (Instance != null && Instance != this) { Destroy(gameObject); return; }
             Instance = this;
+            TelemetryUploader.Instance?.SetTelemetryManager(this);
             _weights = DDAWeights.Load();
         }
 

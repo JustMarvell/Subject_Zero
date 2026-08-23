@@ -34,7 +34,11 @@ namespace SubjectZero.Core
             player.SetInputLocked(true);
             playerCamera.SetLocked(true);
 
+            Time.timeScale = 0f;
+
             PopulateStats();
+
+            TelemetryUploader.Instance?.UploadCurrentSession();
 
             completeMenuRoot.SetActive(true);
             Cursor.lockState = CursorLockMode.None;

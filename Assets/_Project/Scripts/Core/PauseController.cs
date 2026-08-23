@@ -1,5 +1,6 @@
 using UnityEngine;
 using SubjectZero.Input;
+using SubjectZero.Telemetry;
 
 namespace SubjectZero.Core
 {
@@ -39,6 +40,7 @@ namespace SubjectZero.Core
         public void OnQuitToMainMenuButton()
         {
             Time.timeScale = 1f;
+            TelemetryUploader.Instance?.UploadCurrentSession();
             LoadingScreenController.Instance.LoadSceneSingle("MainMenu");
         }
     }
