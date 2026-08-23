@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using SubjectZero.Character.Player;
+using SubjectZero.Telemetry;
 
 namespace SubjectZero.UI
 {
@@ -8,11 +9,23 @@ namespace SubjectZero.UI
     {
         [SerializeField] private FlashlightController flashlight;
         [SerializeField] private Image fillImage;
+        [SerializeField] private GameObject visualsRoot;
+
+        private bool _lastVisible = true;
 
         private void Update()
         {
             if (flashlight == null || fillImage == null) return;
-            fillImage.fillAmount = flashlight.BatteryPercent01;
+
+            bool visible = TelemetryManager.Instance != null && TelemetryManager.Instance.DDAEnabled;
+            if (visible != _lastVisible)
+            {
+                _lastVisible = visible;
+                if (visualsRoot != null) visualsRoot.SetActive(visible);
+            }
+
+            if (visible)
+                fillImage.fillAmount = flashlight.BatteryPercent01;
         }
     }
 }

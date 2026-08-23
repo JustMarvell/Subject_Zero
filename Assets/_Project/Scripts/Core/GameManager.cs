@@ -3,6 +3,8 @@ using SubjectZero.Character.Player;
 using SubjectZero.Character.Enemy;
 using SubjectZero.Telemetry;
 using SubjectZero.World;
+using SubjectZero.Audio;
+using UnityEngine.SceneManagement;
 
 namespace SubjectZero.Core
 {
@@ -88,6 +90,8 @@ namespace SubjectZero.Core
                 if (zoneHasEntity) entity.SetPatrolRoute(patrolRoute);
                 entity.SetZoneActive(zoneHasEntity);
             }
+
+            MusicController.Instance?.HandleZoneLoaded(_currentZoneScene, entity);
 
             if (telemetryManager != null)
             {

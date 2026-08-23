@@ -1,11 +1,14 @@
 using UnityEngine;
 using SubjectZero.Core;
+using SubjectZero.Audio;
 
 namespace SubjectZero.UI
 {
     public class MainMenuController : MonoBehaviour
     {
-        [SerializeField] private GameObject settingsPanel; // stub - full settings menu comes in a later pass
+        [SerializeField] private GameObject settingsPanel;
+
+        private void Start() => MusicController.Instance?.HandleMainMenuLoaded();
 
         public void OnPlayButton()
         {

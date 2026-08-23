@@ -50,10 +50,15 @@ namespace SubjectZero.Core
 
             while (!op.isDone)
             {
-                // Note: progress caps near 0.9 until the scene actually activates -
-                // a known Unity quirk, cosmetic only. Fine to leave as-is for now.
                 if (progressBar != null) progressBar.value = op.progress;
                 yield return null;
+            }
+
+            if (mode == LoadSceneMode.Additive)
+            {
+                Scene loaded = SceneManager.GetSceneByName(sceneName);
+                if (loaded.IsValid() && loaded.isLoaded)
+                    SceneManager.SetActiveScene(loaded);
             }
 
             loadingCanvasRoot.SetActive(false);

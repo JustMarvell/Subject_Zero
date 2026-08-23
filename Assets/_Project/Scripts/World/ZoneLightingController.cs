@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using SubjectZero.Core;
 using SubjectZero.Telemetry;
+using System;
 
 namespace SubjectZero.World
 {
@@ -24,6 +25,7 @@ namespace SubjectZero.World
         public bool IsBlackedOut { get; private set; }
 
         private Coroutine _activeRoutine;
+        public event Action<bool> OnBlackoutChanged;
 
         private void Start()
         {
@@ -50,7 +52,7 @@ namespace SubjectZero.World
             }
             else if (newState == entity.LostState)
             {
-                float delay = Random.Range(minRestoreDelay, maxRestoreDelay);
+                float delay = UnityEngine.Random.Range(minRestoreDelay, maxRestoreDelay);
                 if (_activeRoutine != null) StopCoroutine(_activeRoutine);
                 _activeRoutine = StartCoroutine(RestoreAfterDelayRoutine(delay));
             }
@@ -61,6 +63,7 @@ namespace SubjectZero.World
             yield return Flicker(turningOn: false);
             SetLights(false);
             IsBlackedOut = true;
+            OnBlackoutChanged?.Invoke(false);
             TelemetryManager.Instance?.RecordDarknessStart();
         }
 
@@ -76,6 +79,7 @@ namespace SubjectZero.World
             yield return Flicker(turningOn: true);
             SetLights(true);
             IsBlackedOut = false;
+            OnBlackoutChanged?.Invoke(true);
             TelemetryManager.Instance?.RecordDarknessEnd();
         }
 
