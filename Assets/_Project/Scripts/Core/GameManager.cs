@@ -22,6 +22,8 @@ namespace SubjectZero.Core
         private string _pendingZoneScene;
         private string _pendingSpawnPointId;
 
+        public EnemyController Entity => entity;
+
         private void Awake()
         {
             if (Instance != null && Instance != this) { Destroy(gameObject); return; }

@@ -40,11 +40,14 @@ namespace SubjectZero.Telemetry
         private readonly List<(float start, float end)> _idleIntervals = new();
         private readonly List<float> _resourceConsumedTimestamps = new();
         private readonly List<float> _directionChangeTimestamps = new();
+        private readonly List<(float start, float end)> _darkIntervals = new();
 
         private bool _isHiding;
         private float _currentHideStart;
         private bool _isIdle;
+        private bool _isDark;
         private float _currentIdleStart;
+        private float _currentDarkStart;
         private Vector3 _lastMoveDir;
 
         private float? _pendingStimulusTime;
@@ -174,6 +177,20 @@ namespace SubjectZero.Telemetry
             _hideIntervals.Add((_currentHideStart, SessionTime));
         }
 
+        public void RecordDarknessStart()
+        {
+            if (_isDark) return;
+            _isDark = true;
+            _currentDarkStart = SessionTime;
+        }
+
+        public void RecordDarknessEnd()
+        {
+            if (!_isDark) return;
+            _isDark = false;
+            _darkIntervals.Add((_currentDarkStart, SessionTime));
+        }
+
         public void RecordResourceConsumed() => _resourceConsumedTimestamps.Add(SessionTime);
 
         // ----- Windowed feature computation -----
@@ -194,7 +211,8 @@ namespace SubjectZero.Telemetry
                 hide_ratio = IntervalRatio(_hideIntervals, _isHiding, _currentHideStart, windowStart),
                 movement_erraticism = RatePerMinute(_directionChangeTimestamps, windowStart),
                 resource_usage_rate = RatePerMinute(_resourceConsumedTimestamps, windowStart),
-                idle_ratio = IntervalRatio(_idleIntervals, _isIdle, _currentIdleStart, windowStart)
+                idle_ratio = IntervalRatio(_idleIntervals, _isIdle, _currentIdleStart, windowStart),
+                darkness_ratio = IntervalRatio(_darkIntervals, _isDark, _currentDarkStart, windowStart)
             };
 
             sample.stress_score = StressScoreCalculator.ComputeScore(sample, _weights);
