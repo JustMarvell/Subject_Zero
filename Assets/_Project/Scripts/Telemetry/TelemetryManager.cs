@@ -28,6 +28,8 @@ namespace SubjectZero.Telemetry
 
         public int TotalDeaths => _deathTimestamps.Count;
         public int TotalNearMisses => _nearMissTimestamps.Count;
+        public int TotalHidingTime => _hideIntervals.Count;
+        public int TotalResourceConsumed => _resourceConsumedTimestamps.Count;
 
         private DDAWeights _weights;
         private string _outputPath;

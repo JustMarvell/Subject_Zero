@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff928ce587061e7e59e4a45311fa1bb5, type: 3}
   m_Name: FlashlightConfig
   m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.Character.Player.FlashlightConfig
-  capacitySeconds: 180
+  capacitySeconds: 30
   lowBatteryThreshold: 0.2
   flickerAmount: 1.2
   lightIntensity: 3.5

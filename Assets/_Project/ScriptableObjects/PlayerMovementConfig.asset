@@ -17,7 +17,7 @@ MonoBehaviour:
   sprintSpeed: 4.5
   crouchSpeedMultiplier: 0.6
   standingHeight: 1.8
-  crouchingHeight: 1
+  crouchingHeight: 0.7
   standingCenterY: 0.9
   crouchingCenterY: 0.5
   cameraStandingHeight: 1.65

@@ -56,6 +56,8 @@ namespace SubjectZero.Core
                 $"Time Survived: {minutes:00}:{seconds:00}\n" +
                 $"Times Caught: {telemetryManager.TotalDeaths}\n" +
                 $"Near Misses: {telemetryManager.TotalNearMisses}\n" +
+                $"Total Hide times: {telemetryManager.TotalHidingTime}\n" +
+                $"Total Resource Used: {telemetryManager.TotalResourceConsumed}\n" +
                 $"Final Entity Chase Speed: {entity.CurrentChaseSpeed:F1} m/s\n" +
                 $"Final Entity Vision Range: {entity.CurrentVisionRange:F1} m";
         }

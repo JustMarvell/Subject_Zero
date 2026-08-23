@@ -693,8 +693,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000018597, y: 25}
-  m_SizeDelta: {x: 1028.3944, y: 555.411}
+  m_AnchoredPosition: {x: -0.000018597, y: 91.47068}
+  m_SizeDelta: {x: 1028.3944, y: 422.4696}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &339620154037806098
 CanvasRenderer:
@@ -766,8 +766,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 62.5
-  m_fontSizeBase: 62.5
+  m_fontSize: 46.38
+  m_fontSizeBase: 46.38
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4685,8 +4685,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000040054, y: -1026.3}
-  m_SizeDelta: {x: 1028.3944, y: 206.7249}
+  m_AnchoredPosition: {x: -0.000040054, y: -900.0554}
+  m_SizeDelta: {x: 1028.3944, y: 246.8356}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4914304555708288732
 CanvasRenderer:
@@ -4716,7 +4716,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The entity can see you and hear your footsteps. be carefull
+  m_text: 'The entity can hear your steps if  you are too loud. Flashlight may also
+    atract the entity.
+
+    Use the environment as your hiding place.
+
+    Be careful...'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3e8b2282b7ffffd8abb4a08f69d8b107, type: 2}
   m_sharedMaterial: {fileID: -7975032863711803764, guid: 3e8b2282b7ffffd8abb4a08f69d8b107, type: 2}
@@ -4743,8 +4748,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 62.5
-  m_fontSizeBase: 62.5
+  m_fontSize: 41.6
+  m_fontSizeBase: 41.6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

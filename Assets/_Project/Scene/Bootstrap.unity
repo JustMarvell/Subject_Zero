@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 0cc3a5c5050018b878082b6ca4c76119
-  m_OcclusionCullingData: {fileID: 36300000, guid: e974ee74edd6ef1c69f3f671cc694cee, type: 2}
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -35,7 +35,7 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_UseRadianceAmbientProbe: 0
@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000004, guid: 11ca1a7a118e5ab8e97aabd74f04ccab, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 2bbef579c8a7aa633a80df0a041cec0a, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: c8c2e7b9705a783d78bbdddfc6311540, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -414,8 +414,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 587.52234, y: -180.86467}
-  m_SizeDelta: {x: 798.0492, y: 314.9495}
+  m_AnchoredPosition: {x: 587.52234, y: -186.28827}
+  m_SizeDelta: {x: 798.0492, y: 325.7967}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &202927671
 MonoBehaviour:
@@ -443,8 +443,13 @@ MonoBehaviour:
 
     Near Misses : 00
 
-    Final
-    Entity Chase Speed : 0.0 m/s
+    Total
+    Hide Times : 00
+
+    Total Resrouce Consumed : 00
+
+    Final Entity Chase Speed
+    : 0.0 m/s
 
     Final Entity Vision Range : 0.0 m/s'
   m_isRightToLeft: 0
@@ -473,7 +478,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56.2
+  m_fontSize: 45.55
   m_fontSizeBase: 65.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
