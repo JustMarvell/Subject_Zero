@@ -1,7 +1,6 @@
 pandas
-scikit-learn
 numpy
-skl2onnx
+scikit-learn
+torch
 onnx
-joblib
 onnxruntime
