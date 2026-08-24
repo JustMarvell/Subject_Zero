@@ -97,6 +97,7 @@ namespace SubjectZero.Core
             {
                 telemetryManager.CurrentZone = _currentZoneScene;
                 telemetryManager.DDAEnabled = zoneHasEntity;
+                telemetryManager.TelemetryLoggingEnabled = zoneHasEntity;
             }
         }
 

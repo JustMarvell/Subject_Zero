@@ -25,6 +25,7 @@ namespace SubjectZero.Telemetry
         public string CurrentZone { get; set; } = "unassigned";
 
         public bool DDAEnabled { get; set; } = true;
+        public bool TelemetryLoggingEnabled { get; set; } = true;
 
         public int TotalDeaths => _deathTimestamps.Count;
         public int TotalNearMisses => _nearMissTimestamps.Count;
@@ -96,7 +97,8 @@ namespace SubjectZero.Telemetry
             if (_samplingTimer >= samplingInterval)
             {
                 _samplingTimer = 0f;
-                SampleAndLog();
+                if (TelemetryLoggingEnabled)
+                    SampleAndLog();
             }
         }
 
