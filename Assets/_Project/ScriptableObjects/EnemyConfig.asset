@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23841f70ac5ac4428b4b8a6621df9af2, type: 3}
   m_Name: EnemyConfig
   m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.Character.Enemy.EnemyConfig
-  patrolSpeed: 1.5
-  alertSpeed: 2.2
-  searchSpeed: 2
-  chaseSpeed: 3.5
+  patrolSpeed: 1.1
+  alertSpeed: 3
+  searchSpeed: 2.4
+  chaseSpeed: 4
   visionRange: 8
   visionAngle: 90
   eyeHeight: 1.6
   visionBlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  hearingRangeMax: 15
+  hearingRangeMax: 10
   confirmSightDuration: 0.6
   alertInvestigateTimeout: 5
   searchDuration: 8

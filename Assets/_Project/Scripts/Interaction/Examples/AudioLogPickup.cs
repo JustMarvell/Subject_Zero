@@ -62,8 +62,13 @@ namespace SubjectZero.Interaction.Examples
 
         private IEnumerator WatchForNaturalEnd()
         {
-            while (_isPlaying && _audioSource.isPlaying)
+            while (_isPlaying)
+            {
+                if (!AudioListener.pause && !_audioSource.isPlaying)
+                    break;
+
                 yield return null;
+            }
 
             if (_isPlaying) EndPlaybackCommon();
         }
