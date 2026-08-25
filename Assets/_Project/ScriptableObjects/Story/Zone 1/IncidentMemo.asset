@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d966c54451c3c66180b0f0bba2c151e, type: 3}
+  m_Name: IncidentMemo
+  m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.Story.TextDocumentData
+  documentTitle: INTERNAL MEMO - DO NOT DISTRIBUTE
+  bodyText: "RE: Containment Incident, Sector D \nDate: redacted\n\nSubject \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588
+    (see file 0-\u2588\u2588\u2588\u2588) breached secondary enclosure during scheduled
+    stimulus cycle. Recovered without injury to staff. Recommend review of cycle
+    intensity parameters before next session.\n\nTimeline of note:\n\n02:14 \u2014
+    Cycle initiated per standard protocol.\n02:31 \u2014 Biometric readings exceeded
+    calibrated ceiling. Auto-abort did not trigger.\n02:33 \u2014 Secondary enclosure
+    breach recorded. Subject located outside containment perimeter for approx. 6
+    minutes before re-secure.\n02:39 \u2014 Subject returned to enclosure without
+    visible resistance. \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588
+    reports it \"came back on its own.\"\n\nStaff present at time of breach have
+    been asked not to discuss specifics outside the review committee. This is standard
+    procedure for anomalous-cycle events, not an indication of wrongdoing.\n\nRecommend:
+    (1) review of cycle intensity parameters before next session, (2) audit of auto-abort
+    trigger threshold, (3) revisit whether continued autonomous learning between
+    cycles is within approved scope. Item (3) tabled pending funding review \u2014
+    do not raise with outside auditors.\n\n\u2014 signature redacted"

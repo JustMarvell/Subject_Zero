@@ -4,7 +4,6 @@ using SubjectZero.Character.Enemy;
 using SubjectZero.Telemetry;
 using SubjectZero.World;
 using SubjectZero.Audio;
-using UnityEngine.SceneManagement;
 
 namespace SubjectZero.Core
 {
@@ -99,6 +98,11 @@ namespace SubjectZero.Core
                 telemetryManager.DDAEnabled = zoneHasEntity;
                 telemetryManager.TelemetryLoggingEnabled = zoneHasEntity;
             }
+
+            bool zoneHasLighting = FindFirstObjectByType<ZoneLightingController>() != null ||
+                        FindFirstObjectByType<RandomFlickerController>() != null;
+            if (telemetryManager != null)
+                telemetryManager.FlashlightRelevant = zoneHasLighting;
         }
 
         private SpawnPoint FindSpawnPoint(string id)

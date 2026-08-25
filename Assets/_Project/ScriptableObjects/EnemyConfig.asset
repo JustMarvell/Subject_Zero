@@ -30,3 +30,5 @@ MonoBehaviour:
   loseSightGraceTime: 3
   lostStateDuration: 4
   catchDistance: 1
+  flashlightVisionMultiplier: 1.5
+  audioLogHearingRange: 3

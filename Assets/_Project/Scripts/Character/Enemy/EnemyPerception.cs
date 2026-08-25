@@ -42,12 +42,19 @@ namespace SubjectZero.Character.Enemy
 
         public bool CanHearPlayer()
         {
-            if (_enemy.Player.IsHidden) return false;
+            var player = _enemy.Player;
+            float distance = Vector3.Distance(_enemy.transform.position, player.transform.position);
 
-            float playerNoise01 = _enemy.Player.CurrentNoiseLevel01;
+            // Deliberately bypasses the hidden-check below - playing a log is audible
+            // even while hiding, unlike movement noise.
+            if (player.IsPlayingAudioLog && distance <= _enemy.Config.audioLogHearingRange)
+                return true;
+
+            if (player.IsHidden) return false;
+
+            float playerNoise01 = player.CurrentNoiseLevel01;
             if (playerNoise01 <= 0f) return false;
 
-            float distance = Vector3.Distance(_enemy.transform.position, _enemy.PlayerTransform.position);
             float effectiveHearingRange = _enemy.Config.hearingRangeMax * playerNoise01;
             return distance <= effectiveHearingRange;
         }

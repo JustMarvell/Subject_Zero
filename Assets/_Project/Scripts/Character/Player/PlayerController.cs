@@ -29,6 +29,7 @@ namespace SubjectZero.Character.Player
         public bool IsHidden { get; set; }
         public bool IsFlashlightOn { get; set; }
         public bool InputLocked { get; private set; }
+        public bool IsPlayingAudioLog { get; set; }
 
         /// <summary>
         /// 0-1 noise level for the player's current movement, factoring in crouch.

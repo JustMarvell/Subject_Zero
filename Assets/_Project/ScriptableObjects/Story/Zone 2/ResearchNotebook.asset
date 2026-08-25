@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d966c54451c3c66180b0f0bba2c151e, type: 3}
+  m_Name: ResearchNotebook
+  m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.Story.TextDocumentData
+  documentTitle: Research Notebook
+  bodyText: "[Aug 15, 2005]\nReassigned to the Subject Zero team today. Anselm says
+    it's a \"career opportunity.\" I think it means nobody else wanted it. Okafor
+    gave me a look in the hallway after the announcement \u2014 didn't say anything,
+    just a look. I should've asked her what it meant.\n\n[Aug 29, 2005]\nFirst week
+    on the loop team proper. The conditioning loop adjusts in real time \u2014 reads
+    heart rate, cortisol proxies, even pupil dilation, and recalibrates the stimulus
+    mid-session. It's not testing fear anymore. It's sculpting it. I said as much
+    in the review. Nobody wrote it down. Anselm's response, paraphrased: \"That's
+    the point.\" He didn't seem to think that needed further explanation.\n\n[Sept
+    9, 2005]\nAsked to review six weeks of session logs today. The subject's baseline
+    recovery time between cycles has been getting shorter. Should be the opposite
+    \u2014 repeated exposure is supposed to build some tolerance, even in an adaptive
+    model. It's not building tolerance. It's building technique.\n\n[Sept 20, 2005]\nIt
+    watched me today. Not the cameras \u2014 it. Through the observation glass. I
+    don't think it was supposed to know we were there. Anselm didn't seem surprised
+    when I told him. That's the part I can't stop thinking about \u2014 he didn't
+    seem surprised.\n\n[Sept 27, 2005]\nRequested a meeting outside the program to
+    raise the review findings. Denied \u2014 \"not yet, not until we have more consistent
+    data.\" I don't think there's a version of \"more consistent\" that ends this.
+    I think the data is the excuse to keep going, not a reason to stop.\n\n[Oct 2,
+    2005]\nI want out of this project. I've asked twice. Anselm keeps saying \"just
+    one more cycle.\" I'm going to talk to someone outside the program. If you find
+    this before I get the chance \u2014\n\n[End of entry]\n"

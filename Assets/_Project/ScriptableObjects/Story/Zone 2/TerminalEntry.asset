@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d966c54451c3c66180b0f0bba2c151e, type: 3}
+  m_Name: TerminalEntry
+  m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.Story.TextDocumentData
+  documentTitle: Terminal Entry
+  bodyText: "PROJECT: SUBJECT-0 ADAPTIVE CONDITIONING\nSTATUS: ACTIVE (AUTONOMOUS
+    MODE \u2014 UNSCHEDULED)\n\nLOOP OBJECTIVE: Maintain subject in sustained high-arousal
+    fear state via real-time biometric feedback and stimulus adjustment.\n\nMODEL
+    REVISION HISTORY:\n  v1.0 (Mar 2005)\n\t- Baseline stimulus-response, fixed intensity
+    curve\n  v1.4 (Jun 2005)\n\t- Real-time biometric feedback integrated\n  v2.0
+    (Aug 2005)\n\t- Adaptive prediction layer added\n\t- flagged as experimental,
+    approved for continued testing despite incomplete safety review (see memo, Anselm)\n 
+    v2.1 (Sep 2005)\n\t- Model began generating stimulus adjustments not present
+    in any training set. \n\t- Engineering unable to explain output. Logged as \"acceptable
+    anomaly.\"\n\nLAST MANUAL OVERRIDE: October 3, 2005, 09:14\nOVERRIDE ATTEMPTED
+    BY: R. DEFON\nOVERRIDE RESULT: FAILED. Loop resumed autonomous control T+00:04:12.\nOVERRIDE
+    LOG : \n - \"...attempting shutdown sequence...loop rejecting external commands...requesting
+    supervisor override...\"\n - [remainder of log corrupted]\n\nNOTE : \"It doesn't
+    need the room anymore. Suspend further overrides pending director review. Do
+    not attempt this again without me present.\""

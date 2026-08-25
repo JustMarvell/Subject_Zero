@@ -1,0 +1,133 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0f09eab4239f962fa07a4ab73ee596d, type: 3}
+  m_Name: PersonalLog_W6
+  m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.Story.AudioLogData
+  logTitle: Personal Log - Week 6
+  clip: {fileID: 8300000, guid: 3847713ddfae6c8aa8c7697af700e7e5, type: 3}
+  subtitles:
+  - startTime: 0
+    text: ....
+  - startTime: 2
+    text: Hello....Hey
+  - startTime: 8
+    text: recording this for myself mostly
+  - startTime: 11
+    text: Or for you, i guess
+  - startTime: 14
+    text: '*ahhh* what am I kidding'
+  - startTime: 17
+    text: '[*muffled*]'
+  - startTime: 19
+    text: six weeks. It's been six weeks on the loop team now
+  - startTime: 25
+    text: They keep telling me the subject's progress is
+  - startTime: 29
+    text: exceptional
+  - startTime: 31
+    text: at least thats the word Anselm used
+  - startTime: 35
+    text: exceptional
+  - startTime: 37
+    text: like it's a student
+  - startTime: 39
+    text: It's not.
+  - startTime: 41
+    text: It's not a student
+  - startTime: 43
+    text: It learns from us.
+  - startTime: 45
+    text: the way we act..
+  - startTime: 47
+    text: the way we react to it.
+  - startTime: 49
+    text: its....
+  - startTime: 52
+    text: It's getting good
+  - startTime: 53
+    text: It's getting good at knowing what's scares people
+  - startTime: 56
+    text: even before they know it for themselfs
+  - startTime: 61
+    text: '*sighs*'
+  - startTime: 63
+    text: I....
+  - startTime: 64
+    text: I watch a session yesterday.
+  - startTime: 68
+    text: where it adjusted the stimulus before the subjects
+  - startTime: 71
+    text: 'own biometrics has even peaked '
+  - startTime: 75
+    text: 
+  - startTime: 76
+    text: like...
+  - startTime: 76
+    text: like its...
+  - startTime: 80
+    text: It anticipated the peak...
+  - startTime: 83
+    text: that...
+  - startTime: 85
+    text: that shouldn't be possible...
+  - startTime: 88
+    text: even with the current model
+  - startTime: 91
+    text: ...
+  - startTime: 92
+    text: unless...
+  - startTime: 94
+    text: 'unless it''s building it''s own model '
+  - startTime: 98
+    text: on top of the one we gave it.
+  - startTime: 101
+    text: ...
+  - startTime: 104
+    text: I....
+  - startTime: 107
+    text: I asked for a meeting outside the program today
+  - startTime: 112
+    text: got denied..
+  - startTime: 113
+    text: not yet..
+  - startTime: 115
+    text: It's not the time
+  - startTime: 117
+    text: not until we have a consistent data they said.
+  - startTime: 121
+    text: '*sigh*'
+  - startTime: 124
+    text: I just...
+  - startTime: 126
+    text: 'keep telling myself you know... '
+  - startTime: 128
+    text: just two more weeks..
+  - startTime: 131
+    text: just TWO more weeks
+  - startTime: 132
+    text: 'and I''ll have enough documentation '
+  - startTime: 133
+    text: too..
+  - startTime: 136
+    text: at least...
+  - startTime: 137
+    text: to take me somewhere real you know
+  - startTime: 140
+    text: ....
+  - startTime: 141
+    text: two more weeks...
+  - startTime: 141
+    text: two more weeks...
+  - startTime: 142
+    text: ....
+  - startTime: 147
+    text: I should go..

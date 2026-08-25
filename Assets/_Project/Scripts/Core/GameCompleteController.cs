@@ -4,6 +4,8 @@ using SubjectZero.Character.Player;
 using SubjectZero.Character.Enemy;
 using SubjectZero.CameraSystem;
 using SubjectZero.Telemetry;
+using SubjectZero.UI;
+using SubjectZero.Interaction.Examples;
 
 namespace SubjectZero.Core
 {
@@ -30,6 +32,9 @@ namespace SubjectZero.Core
 
         public void TriggerGameComplete()
         {
+            TextDocumentController.Instance?.ForceClose();
+            AudioLogPickup.CurrentlyPlaying?.HandlePlayerCaughtFade();
+
             IsActive = true;
             player.SetInputLocked(true);
             playerCamera.SetLocked(true);

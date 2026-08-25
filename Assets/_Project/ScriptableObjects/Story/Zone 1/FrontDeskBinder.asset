@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d966c54451c3c66180b0f0bba2c151e, type: 3}
+  m_Name: FrontDeskBinder
+  m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.Story.TextDocumentData
+  documentTitle: Ventrell Insitute
+  bodyText: "Front Desk Reference All visitors must sign in and wear a badge above
+    the waist at all times. Escort required beyond Sector B. No exceptions, including
+    staff family. Lab Wing access requires Level 2 clearance. See Dr. Anselm or facility
+    admin. Fire drill schedule posted in break room. Please do not prop Sector C
+    doors \u2014 they do not reset automatically.\n\nDeliveries: Loading dock only,
+    7 AM\u20133 PM. Do not sign for Sector D shipments \u2014 route to facilities
+    directly, they have their own manifest system.\n\nParking: Staff lot A. Visitor
+    lot B. Lot C is reserved \u2014 do not direct visitors there even if A/B are
+    full.\n\nAfter-hours access: Requires director sign-off, logged separately from
+    standard badge system. Front desk does not issue after-hours badges under any
+    circumstance, per updated policy (see addendum).\n\n\n\n\n\n\n\n\nAddendum: New
+    rule as of this month \u2014 no solo after-hours access to Sector D, full stop,
+    no exceptions even with sign-off. Buddy system only. \u2014 M.\n\nLost & Found:
+    Kept in the drawer under the desk. Please log items before storing."

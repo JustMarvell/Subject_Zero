@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d966c54451c3c66180b0f0bba2c151e, type: 3}
+  m_Name: TerminalEntry
+  m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.Story.TextDocumentData
+  documentTitle: SECURITY LOG - EXPORT
+  bodyText: "SECURITY LOG \u2014 EXPORT\n...\nSept 30, 2005  J.ANSELM\t\tCLOCK-IN 
+    06:12\nSept 30, 2005  R.OKAFOR\t\tCLOCK-IN  07:30\nSept 30, 2005  R.DEFON\t\tCLOCK-IN 
+    07:52\nSept 30, 2005  R.OKAFOR\t\tCLOCK-OUT 18:04\nSept 30, 2005  J.ANSELM\t\tCLOCK-OUT
+    19:41\nSept 30, 2005  R. DEFON\t\tCLOCK-OUT 20:15\n...\nOct 3, 2005  J.ANSELM\t\t\tCLOCK-IN 
+    06:41\nOct 3, 2005  R. DEFON\t\t\tCLOCK-IN  07:58\nOct 3, 2005  R. DEFON\t\t\tSECTOR-D 
+    ACCESS GRANTED   09:12\nOct 3, 2005  R. DEFON\t\t\tSECTOR-D  ACCESS GRANTED  
+    14:47   <FLAG: RE-ENTRY W/O LOGGED EXIT>\nOct 3, 2005  R. DEFON\t\t\tCLOCK-OUT
+    --:--   <ERROR: NO EXIT RECORD>\n...\nOct 4, 2005  R.OKAFOR\t\t\tCLOCK-IN  07:28\nOct
+    4, 2005  R.OKAFOR\t\t\tSECTOR-D  ACCESS DENIED   08:03   <REASON: CLEARANCE INSUFFICIENT>\nOct
+    4, 2005  R.OKAFOR\t\t\tCLOCK-OUT 16:55   <NOTE: EARLY DEPARTURE, NO REASON LOGGED>\n...\nOct
+    6, 2005  J.ANSELM\t\t\tCLOCK-IN  05:58\nOct 6, 2005  J.ANSELM\t\t\tSECTOR-D 
+    ACCESS GRANTED   06:20\nOct 6, 2005  J.ANSELM\t\t\tCLOCK-OUT 23:47\n...\nOct
+    8, 2005  SUBJECT-0\t\tSECTOR-D  ACCESS GRANTED   <FLAG: NON-HUMAN CREDENTIAL>\nOct
+    8, 2005  J.ANSELM       \tCLOCK-IN  04:02   <NOTE: OUTSIDE NORMAL HOURS>\nOct
+    8, 2005  J.ANSELM       \tCLOCK-OUT --:--   <ERROR: NO EXIT RECORD>\n...\n[END
+    OF EXPORT \u2014 REMAINING ENTRIES CORRUPTED OR UNREADABLE]"

@@ -5,6 +5,8 @@ using SubjectZero.Character.Enemy;
 using SubjectZero.CameraSystem;
 using SubjectZero.Audio;
 using SubjectZero.Telemetry;
+using SubjectZero.UI;
+using SubjectZero.Interaction.Examples;
 
 namespace SubjectZero.Core
 {
@@ -38,6 +40,9 @@ namespace SubjectZero.Core
 
         private IEnumerator CaughtRoutine(EnemyController entity)
         {
+            TextDocumentController.Instance?.ForceClose();
+            AudioLogPickup.CurrentlyPlaying?.HandlePlayerCaughtFade();
+
             entity.FreezeForCaughtSequence();
             player.SetInputLocked(true);
             playerCamera.SetLocked(true);

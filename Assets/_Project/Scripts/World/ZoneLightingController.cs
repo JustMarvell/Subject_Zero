@@ -1,31 +1,20 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using SubjectZero.Core;
 using SubjectZero.Telemetry;
-using System;
 
 namespace SubjectZero.World
 {
     public class ZoneLightingController : MonoBehaviour
     {
-        [SerializeField] private List<Light> roomLights = new();
-        [SerializeField] private Light directionalLight;
-        [SerializeField] private float directionalDimIntensity = 0.05f;
-        [SerializeField] private float directionalNormalIntensity = 0.2f;
-
-        [Header("Flicker")]
-        [SerializeField] private float flickerDuration = 0.6f;
-        [SerializeField] private int flickerSteps = 6;
-
-        [Header("Blackout timing")]
+        [SerializeField] private FlickeringLightGroup lightGroup;
         [SerializeField] private float minRestoreDelay = 10f;
         [SerializeField] private float maxRestoreDelay = 20f;
 
-        public bool IsBlackedOut { get; private set; }
+        public bool IsBlackedOut => !lightGroup.IsOn;
+        public event System.Action<bool> OnBlackoutChanged;
 
         private Coroutine _activeRoutine;
-        public event Action<bool> OnBlackoutChanged;
 
         private void Start()
         {
@@ -45,14 +34,12 @@ namespace SubjectZero.World
 
             if (isThreatState)
             {
-                // Cancel any pending "restore lights" countdown - re-engaging means
-                // the darkness should persist, not expire on the old timer.
                 if (_activeRoutine != null) StopCoroutine(_activeRoutine);
-                _activeRoutine = IsBlackedOut ? null : StartCoroutine(BlackoutRoutine());
+                _activeRoutine = lightGroup.IsOn ? StartCoroutine(BlackoutRoutine()) : null;
             }
             else if (newState == entity.LostState)
             {
-                float delay = UnityEngine.Random.Range(minRestoreDelay, maxRestoreDelay);
+                float delay = Random.Range(minRestoreDelay, maxRestoreDelay);
                 if (_activeRoutine != null) StopCoroutine(_activeRoutine);
                 _activeRoutine = StartCoroutine(RestoreAfterDelayRoutine(delay));
             }
@@ -60,47 +47,19 @@ namespace SubjectZero.World
 
         private IEnumerator BlackoutRoutine()
         {
-            yield return Flicker(turningOn: false);
-            SetLights(false);
-            IsBlackedOut = true;
-            OnBlackoutChanged?.Invoke(false);
+            yield return lightGroup.PlayFlicker(false);
             TelemetryManager.Instance?.RecordDarknessStart();
+            OnBlackoutChanged?.Invoke(false);
         }
 
         private IEnumerator RestoreAfterDelayRoutine(float delay)
         {
             float t = 0f;
-            while (t < delay)
-            {
-                t += Time.deltaTime;
-                yield return null;
-            }
+            while (t < delay) { t += Time.deltaTime; yield return null; }
 
-            yield return Flicker(turningOn: true);
-            SetLights(true);
-            IsBlackedOut = false;
-            OnBlackoutChanged?.Invoke(true);
+            yield return lightGroup.PlayFlicker(true);
             TelemetryManager.Instance?.RecordDarknessEnd();
-        }
-
-        private IEnumerator Flicker(bool turningOn)
-        {
-            float stepDuration = flickerDuration / flickerSteps;
-            for (int i = 0; i < flickerSteps; i++)
-            {
-                bool on = turningOn ? (i % 2 == 0) : (i % 2 != 0);
-                SetLights(on, includeDirectional: false); // dim fill light stays steady, only room lights flicker
-                yield return new WaitForSeconds(stepDuration);
-            }
-        }
-
-        private void SetLights(bool on, bool includeDirectional = true)
-        {
-            foreach (var light in roomLights)
-                if (light != null) light.enabled = on;
-
-            if (includeDirectional && directionalLight != null)
-                directionalLight.intensity = on ? directionalNormalIntensity : directionalDimIntensity;
+            OnBlackoutChanged?.Invoke(true);
         }
     }
 }

@@ -23,6 +23,7 @@ namespace SubjectZero.Telemetry
 
         public float stress_score;
         public float darkness_ratio;
+        public float reading_ratio;
         public string difficulty_label;
     }
 }

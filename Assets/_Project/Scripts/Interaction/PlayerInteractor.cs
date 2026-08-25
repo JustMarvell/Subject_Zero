@@ -23,6 +23,16 @@ namespace SubjectZero.Interaction
 
         private void Update()
         {
+            if (player.InputLocked)
+            {
+                if (CurrentInteractable != null)
+                {
+                    CurrentInteractable = null;
+                    OnFocusChanged?.Invoke(null);
+                }
+                return;
+            }
+
             UpdateFocus();
 
             if (inputReader.InteractPressedThisFrame && CurrentInteractable != null &&

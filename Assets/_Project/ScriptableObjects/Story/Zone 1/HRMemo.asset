@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d966c54451c3c66180b0f0bba2c151e, type: 3}
+  m_Name: HRMemo
+  m_EditorClassIdentifier: Assembly-CSharp::SubjectZero.Story.TextDocumentData
+  documentTitle: 'To All Staff :'
+  bodyText: "Following review, Ventrell campus operations will be paused effective
+    November 1, 2005 pending relocation of active research to our Denver facility.
+    Please clear personal effects from workstations by end of month. Questions to
+    HR.\n\nRelocation details: Active projects in Sectors A\u2013C will transition
+    to Denver over a phased 6-week schedule. Staff will be contacted individually
+    regarding transfer eligibility and severance options where applicable.\n\nSector
+    D projects are not part of the relocation. Sector D staff should direct questions
+    to Dr. Anselm directly, not HR \u2014 we do not have visibility into that program's
+    transition plan.\n\nPlease note: campus badge access will be deactivated in stages
+    as sectors close. If your badge stops working before your scheduled clear-out
+    date, do not attempt to re-enter \u2014 contact facilities for an escort.\n\n\n\n\n\n\n\nA
+    reminder that all research materials, notebooks, and recordings remain Ventrell
+    property and may not be removed from the premises, including personal notes taken
+    during work hours. Exit interviews will include a materials checklist.\n\nWe
+    recognize this transition has been difficult for many of you, especially given
+    recent events in Sector D. Counseling resources remain available through the
+    employee assistance line through the end of the month, after which the line will
+    be discontinued along with other campus services."

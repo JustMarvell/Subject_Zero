@@ -26,6 +26,7 @@ namespace SubjectZero.Telemetry
 
         public bool DDAEnabled { get; set; } = true;
         public bool TelemetryLoggingEnabled { get; set; } = true;
+        public bool FlashlightRelevant { get; set; } = true;
 
         public int TotalDeaths => _deathTimestamps.Count;
         public int TotalNearMisses => _nearMissTimestamps.Count;
@@ -44,9 +45,12 @@ namespace SubjectZero.Telemetry
         private readonly List<float> _resourceConsumedTimestamps = new();
         private readonly List<float> _directionChangeTimestamps = new();
         private readonly List<(float start, float end)> _darkIntervals = new();
+        private readonly List<(float start, float end)> _readingIntervals = new();
 
         private bool _isHiding;
+        private bool _isReading;
         private float _currentHideStart;
+        private float _currentReadingStart;
         private bool _isIdle;
         private bool _isDark;
         private float _currentIdleStart;
@@ -163,6 +167,7 @@ namespace SubjectZero.Telemetry
         /// <summary>Call the moment a threat/stimulus first appears (e.g. entity enters Alert).</summary>
         public void ArmReactionWindow()
         {
+            if (player != null && player.InputLocked) return; // can't react if input is frozen
             if (!_pendingStimulusTime.HasValue)
                 _pendingStimulusTime = SessionTime;
         }
@@ -195,6 +200,22 @@ namespace SubjectZero.Telemetry
             _darkIntervals.Add((_currentDarkStart, SessionTime));
         }
 
+        public void RecordReadingStart()
+        {
+            if (_isReading) return;
+            _isReading = true;
+            _currentReadingStart = SessionTime;
+        }
+
+        public void RecordReadingEnd()
+        {
+            if (!_isReading) return;
+            _isReading = false;
+            _readingIntervals.Add((_currentReadingStart, SessionTime));
+        }
+
+        public void ClearPendingReaction() => _pendingStimulusTime = null;
+
         public void RecordResourceConsumed() => _resourceConsumedTimestamps.Add(SessionTime);
 
         // ----- Windowed feature computation -----
@@ -216,6 +237,7 @@ namespace SubjectZero.Telemetry
                 movement_erraticism = RatePerMinute(_directionChangeTimestamps, windowStart),
                 resource_usage_rate = RatePerMinute(_resourceConsumedTimestamps, windowStart),
                 idle_ratio = IntervalRatio(_idleIntervals, _isIdle, _currentIdleStart, windowStart),
+                reading_ratio = IntervalRatio(_readingIntervals, _isReading, _currentReadingStart, windowStart),
                 darkness_ratio = IntervalRatio(_darkIntervals, _isDark, _currentDarkStart, windowStart)
             };
 

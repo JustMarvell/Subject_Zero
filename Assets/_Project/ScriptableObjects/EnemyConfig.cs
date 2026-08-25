@@ -46,5 +46,9 @@ namespace SubjectZero.Character.Enemy
         [Header("Flashlight Interaction")]
         [Tooltip("Multiplier applied to vision range when the player's flashlight is on - light gives away position.")]
         public float flashlightVisionMultiplier = 1.5f;
+
+        [Header("Audio Log Hearing")]
+        [Tooltip("Much shorter than hearingRangeMax - an audio log is quieter than footsteps/sprint/flashlight.")]
+        public float audioLogHearingRange = 5f;
     }
 }
