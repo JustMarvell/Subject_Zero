@@ -95,12 +95,14 @@ namespace SubjectZero.Cutscene
         public void DuckGameplayAudio()
         {
             AudioManager.Instance.SetLoopVolume("music", duckedMusicVolume, duckFadeTime);
+            AudioManager.Instance.SetLoopVolume("ambience", duckedMusicVolume, duckFadeTime);
             AudioManager.Instance.SetLoopVolume("entity_tension", duckedEntityVolume, duckFadeTime);
         }
 
         public void RestoreGameplayAudio()
         {
             AudioManager.Instance.SetLoopVolume("music", 1f, duckFadeTime);
+            AudioManager.Instance.SetLoopVolume("ambience", duckedMusicVolume, duckFadeTime);
             AudioManager.Instance.SetLoopVolume("entity_tension", 1f, duckFadeTime);
         }
     }
