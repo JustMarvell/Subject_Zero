@@ -29,6 +29,7 @@ namespace SubjectZero.Cutscene
         /// <summary>The cross-scene entry point - called by MainMenuController.
         /// Everything else below is called BY the Timeline itself via Signals,
         /// once playback has actually started.</summary>
+        /// This is not used. IGNORE THISS
         public void Play() => director.Play();
 
         // Signal at the moment typing should begin
