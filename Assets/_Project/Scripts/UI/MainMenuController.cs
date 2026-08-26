@@ -1,6 +1,7 @@
 using UnityEngine;
 using SubjectZero.Core;
 using SubjectZero.Audio;
+using SubjectZero.Cutscene;
 
 namespace SubjectZero.UI
 {
@@ -14,7 +15,7 @@ namespace SubjectZero.UI
         {
             LoadingScreenController.Instance.LoadSceneSingle("Bootstrap", () =>
             {
-                GameManager.Instance.LoadFirstZone(null);
+                GameManager.Instance.LoadFirstZone(() => IntroCutsceneController.Instance.Play());
             });
         }
 

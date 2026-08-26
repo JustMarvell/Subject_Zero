@@ -128,5 +128,12 @@ namespace SubjectZero.Audio
             float dB = normalized01 > 0.0001f ? Mathf.Log10(normalized01) * 20f : -80f;
             mixer.SetFloat(exposedParam, dB);
         }
+
+        /// <summary>Fades an existing loop channel to a new volume without touching its clip - used for cutscene audio ducking.</summary>
+        public void SetLoopVolume(string channel, float targetVolume, float fadeTime)
+        {
+            if (_loopChannels.TryGetValue(channel, out var src))
+                RestartFade(channel, src, targetVolume, fadeTime);
+        }
     }
 }

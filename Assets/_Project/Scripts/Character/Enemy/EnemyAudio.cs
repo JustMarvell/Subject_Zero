@@ -20,6 +20,11 @@ namespace SubjectZero.Character.Enemy
         private void OnEnable() => enemy.StateMachine.OnStateChanged += HandleStateChanged;
         private void OnDisable() => enemy.StateMachine.OnStateChanged -= HandleStateChanged;
 
+        private void OnDestroy()
+        {
+            AudioManager.Instance?.StopLoop(LoopChannel, 0f);
+        }
+
         private void HandleStateChanged(IState newState)
         {
             if (newState == enemy.PatrolState)

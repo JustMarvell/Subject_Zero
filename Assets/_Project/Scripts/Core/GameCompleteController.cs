@@ -6,6 +6,7 @@ using SubjectZero.CameraSystem;
 using SubjectZero.Telemetry;
 using SubjectZero.UI;
 using SubjectZero.Interaction.Examples;
+using SubjectZero.Audio;
 
 namespace SubjectZero.Core
 {
@@ -32,6 +33,9 @@ namespace SubjectZero.Core
 
         public void TriggerGameComplete()
         {
+            AudioManager.Instance.StopLoop("entity_tension", 1f);
+            AudioManager.Instance.StopLoop("music", 1f);
+
             TextDocumentController.Instance?.ForceClose();
             AudioLogPickup.CurrentlyPlaying?.HandlePlayerCaughtFade();
 
